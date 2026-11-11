@@ -56,7 +56,6 @@ export const project: Project = {
     results: [
       "Open-sourced with CI tests (GitHub Actions) and an OpenCode skill wrapping the CLI for interactive use.",
       "Every triage run produces an auditable report: score and reason per message, and full undo for any batch.",
-      "TODO(metric): messages triaged / false-positive rate",
     ],
   },
   es: {
@@ -101,7 +100,6 @@ export const project: Project = {
     results: [
       "Publicado en GitHub con tests en CI (GitHub Actions) y una skill de OpenCode que envuelve el CLI para uso interactivo.",
       "Cada corrida produce un informe auditable: puntaje y razón por mensaje, y undo completo de cualquier lote.",
-      "TODO(metric): mensajes triados / tasa de falsos positivos",
     ],
   },
 };
