@@ -1,5 +1,6 @@
 import { projects } from "@/content/projects";
-import type { Locale, Project, ProjectView } from "@/content/types";
+import { work } from "@/content/work";
+import type { Locale, Project, ProjectView, WorkEntry } from "@/content/types";
 
 function toView(project: Project, locale: Locale): ProjectView {
   return { ...project, content: project[locale] };
@@ -23,4 +24,8 @@ export function getFeaturedProjects(
   return getAllProjects(locale)
     .filter((project) => project.featured)
     .slice(0, limit);
+}
+
+export function getWorkEntries(): WorkEntry[] {
+  return work;
 }

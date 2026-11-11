@@ -18,6 +18,7 @@ export const project: Project = {
     repo: "https://github.com/OswaldoRodriguez123/psico-yerma",
   },
   featured: true,
+  cover: "/projects/psico-yerma.webp",
   en: {
     title: "psico-yerma — Practice site & admin panel",
     tagline:

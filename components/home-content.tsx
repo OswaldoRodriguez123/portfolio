@@ -6,6 +6,7 @@ import { Section } from "@/components/section";
 import { Hero } from "@/components/hero";
 import { ProjectCard } from "@/components/project-card";
 import { StackList } from "@/components/stack-list";
+import { WorkList } from "@/components/work-list";
 import { ContactCta } from "@/components/contact-cta";
 
 export function HomeContent({ locale }: { locale: Locale }) {
@@ -39,6 +40,10 @@ export function HomeContent({ locale }: { locale: Locale }) {
           <p>{t("aboutP1")}</p>
           <p>{t("aboutP2")}</p>
         </div>
+      </Section>
+
+      <Section id="work" title={t("workTitle")}>
+        <WorkList locale={locale} />
       </Section>
 
       <Section id="stack" title={t("stackTitle")}>
