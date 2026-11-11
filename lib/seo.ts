@@ -69,9 +69,10 @@ export function buildMetadata({
   const normalizedPath = path === "/" ? "" : path;
   const urlFor = (l: string) => `${siteUrl}/${l}${normalizedPath}`;
   const canonical = urlFor(locale);
+  const ogTitle = title ?? `${site.name} — AI & Full-stack Engineer`;
 
   return {
-    title,
+    ...(title ? { title } : {}),
     description,
     alternates: {
       canonical,
@@ -82,7 +83,7 @@ export function buildMetadata({
       },
     },
     openGraph: {
-      title: title ?? `${site.name} — AI & Full-stack Engineer`,
+      title: ogTitle,
       description,
       url: canonical,
       siteName: site.name,
@@ -91,7 +92,7 @@ export function buildMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: title ?? `${site.name} — AI & Full-stack Engineer`,
+      title: ogTitle,
       description,
     },
   };
