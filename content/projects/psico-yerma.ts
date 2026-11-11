@@ -19,7 +19,7 @@ export const project: Project = {
   },
   featured: true,
   en: {
-    title: "psico.yerma — Practice site & admin panel",
+    title: "psico-yerma — Practice site & admin panel",
     tagline:
       "Website and private admin panel for a child and teen psychology practice",
     role: "Solo developer — design, build and deployment",
@@ -63,7 +63,7 @@ export const project: Project = {
     ],
   },
   es: {
-    title: "psico.yerma — Sitio web y panel de administración",
+    title: "psico-yerma — Sitio web y panel de administración",
     tagline:
       "Sitio web y panel administrativo privado para una consulta de psicología infantil y adolescente",
     role: "Desarrollo completo — diseño, construcción y despliegue",
