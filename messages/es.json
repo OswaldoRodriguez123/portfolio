@@ -3,7 +3,10 @@
     "projects": "Proyectos",
     "about": "Sobre mí",
     "contact": "Contacto",
-    "skip": "Saltar al contenido"
+    "skip": "Saltar al contenido",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "menu": "Menú"
   },
   "home": {
     "headline": "Construyo productos con IA para equipos reales",
@@ -22,7 +25,8 @@
     "code": "Código"
   },
   "footer": {
-    "rights": "Todos los derechos reservados."
+    "rights": "Todos los derechos reservados.",
+    "role": "Ingeniero de IA y Full-stack"
   },
   "meta": {
     "title": "Oswaldo Rodríguez — Ingeniero de IA y Full-stack",

@@ -3,7 +3,10 @@
     "projects": "Projects",
     "about": "About",
     "contact": "Contact",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menu": "Menu"
   },
   "home": {
     "headline": "I build AI products for real teams",
@@ -22,7 +25,8 @@
     "code": "Code"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "role": "AI & Full-stack Engineer"
   },
   "meta": {
     "title": "Oswaldo Rodríguez — AI & Full-stack Engineer",
