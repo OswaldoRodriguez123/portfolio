@@ -17,6 +17,7 @@
     "aboutTitle": "About",
     "aboutP1": "Full-stack and AI engineer based in Santiago, Chile. I ship production web apps and AI-assisted pipelines end to end: from schema design and auth to LLM classification and deployment.",
     "aboutP2": "I have delivered for a real client (a psychology practice in production), built my own products (a dance-school directory with a human-in-the-loop data pipeline) and open-sourced tools for my own workflows, like a junk-mail triage CLI. This portfolio is the index of that work.",
+    "workTitle": "Work",
     "stackTitle": "Stack",
     "stackLanguages": "Languages",
     "stackFrontend": "Frontend",
