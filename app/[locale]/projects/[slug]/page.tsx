@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { CaseStudy } from "@/components/case-study";
 import { getProject } from "@/lib/content";
 import { projects } from "@/content/projects";
+import { buildMetadata } from "@/lib/seo";
 import { isLocale, routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -25,10 +26,12 @@ export async function generateMetadata({
     notFound();
   }
 
-  return {
+  return buildMetadata({
+    locale,
     title: project.content.title,
     description: project.content.tagline,
-  };
+    path: `/projects/${project.slug}`,
+  });
 }
 
 export default async function CaseStudyPage({

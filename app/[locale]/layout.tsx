@@ -7,7 +7,9 @@ import { ThemeProvider } from "next-themes";
 import "../globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { JsonLd } from "@/components/json-ld";
 import { isLocale, routing } from "@/i18n/routing";
+import { siteUrl } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -20,7 +22,11 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Oswaldo Rodríguez — AI & Full-stack Engineer",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Oswaldo Rodríguez — AI & Full-stack Engineer",
+    template: "%s — Oswaldo Rodríguez",
+  },
   description: "Portfolio of AI and full-stack projects.",
 };
 
@@ -47,6 +53,7 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
+        <JsonLd />
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <SiteHeader />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ProjectsIndex } from "@/components/projects-index";
+import { buildMetadata } from "@/lib/seo";
 import { isLocale, routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -18,10 +19,12 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: "projects" });
 
-  return {
+  return buildMetadata({
+    locale,
     title: t("title"),
     description: t("description"),
-  };
+    path: "/projects",
+  });
 }
 
 export default async function ProjectsPage({
