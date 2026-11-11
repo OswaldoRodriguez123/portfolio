@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "skip": "Saltar al contenido"
+  },
+  "home": {
+    "headline": "Construyo productos con IA para equipos reales",
+    "viewAllProjects": "Ver todos los proyectos",
+    "email": "Escríbeme"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "description": "Trabajo seleccionado."
+  },
+  "project": {
+    "problem": "Problema",
+    "approach": "Enfoque",
+    "results": "Resultados",
+    "live": "Demo",
+    "code": "Código"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  },
+  "meta": {
+    "title": "Oswaldo Rodríguez — Ingeniero de IA y Full-stack",
+    "description": "Portafolio de proyectos de IA y full-stack."
+  }
+}

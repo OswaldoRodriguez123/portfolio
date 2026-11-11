@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "skip": "Skip to content"
+  },
+  "home": {
+    "headline": "I build AI products for real teams",
+    "viewAllProjects": "View all projects",
+    "email": "Email me"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Selected work."
+  },
+  "project": {
+    "problem": "Problem",
+    "approach": "Approach",
+    "results": "Results",
+    "live": "Live",
+    "code": "Code"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "meta": {
+    "title": "Oswaldo Rodríguez — AI & Full-stack Engineer",
+    "description": "Portfolio of AI and full-stack projects."
+  }
+}
