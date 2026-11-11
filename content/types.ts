@@ -13,7 +13,7 @@ export type Project = {
   slug: string;
   year: number;
   stack: string[];
-  links: { live?: string; repo?: string };
+  links: { live?: string; repo?: string; repoUi?: string };
   featured: boolean;
   cover?: string;
   en: LocalizedContent;

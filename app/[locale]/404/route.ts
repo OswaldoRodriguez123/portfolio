@@ -5,13 +5,33 @@
 // a self-contained 404 response instead. See "Status codes" in the loading
 // file-convention docs. This is intentionally static and dependency-free.
 
-const html = `<!DOCTYPE html>
-<html lang="en">
+const pages = {
+  en: {
+    lang: "en",
+    title: "404 — Page not found",
+    heading: "Page not found",
+    body: "The page you are looking for does not exist.",
+    cta: "Back to home",
+    href: "/en",
+  },
+  es: {
+    lang: "es",
+    title: "404 — Página no encontrada",
+    heading: "Página no encontrada",
+    body: "La página que buscas no existe.",
+    cta: "Volver al inicio",
+    href: "/es",
+  },
+} as const;
+
+function renderHtml(page: (typeof pages)[keyof typeof pages]) {
+  return `<!DOCTYPE html>
+<html lang="${page.lang}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <title>404 — Page not found</title>
+    <title>${page.title}</title>
     <style>
       :root { color-scheme: light dark; }
       body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
@@ -32,15 +52,22 @@ const html = `<!DOCTYPE html>
   <body>
     <main>
       <p class="code">404</p>
-      <h1>Page not found · Página no encontrada</h1>
-      <p>The page you are looking for does not exist. La página que buscas no existe.</p>
-      <a href="/en">Back to home · Volver al inicio</a>
+      <h1>${page.heading}</h1>
+      <p>${page.body}</p>
+      <a href="${page.href}">${page.cta}</a>
     </main>
   </body>
 </html>`;
+}
 
-export function GET() {
-  return new Response(html, {
+export async function GET(
+  _req: Request,
+  ctx: RouteContext<"/[locale]/404">,
+) {
+  const { locale } = await ctx.params;
+  const page = locale === "es" ? pages.es : pages.en;
+
+  return new Response(renderHtml(page), {
     status: 404,
     headers: { "content-type": "text/html; charset=utf-8" },
   });

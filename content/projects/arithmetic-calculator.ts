@@ -17,6 +17,7 @@ export const project: Project = {
   ],
   links: {
     repo: "https://github.com/OswaldoRodriguez123/arithmetic-calculator-api",
+    repoUi: "https://github.com/OswaldoRodriguez123/arithmetic-calculator-ui",
   },
   featured: false,
   en: {

@@ -63,6 +63,16 @@ export function CaseStudy({
               {t("live")} ↗
             </a>
           ) : null}
+          {project.links.repoUi ? (
+            <a
+              href={project.links.repoUi}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-10 items-center rounded-lg border border-border bg-background px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              {t("codeUi")} ↗
+            </a>
+          ) : null}
           {project.links.repo ? (
             <a
               href={project.links.repo}
