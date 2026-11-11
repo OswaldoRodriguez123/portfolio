@@ -48,7 +48,6 @@ export const project: Project = {
     results: [
       "Runs fully automated and free in a public repo: extraction, dedup, enrichment and publishing, Mondays at 13:00 Chile time.",
       "Three outputs from one list: a NotebookLM-ready Markdown file, `jsonl` for embeddings and a separate `_menus.jsonl` with dishes, prices and allergens.",
-      "TODO(metric): places extracted / weekly runs",
     ],
   },
   es: {
@@ -86,7 +85,6 @@ export const project: Project = {
     results: [
       "Corre de forma totalmente automatizada y gratuita en un repo público: extracción, deduplicación, enriquecimiento y publicación, los lunes a las 13:00 hora de Chile.",
       "Tres salidas desde una lista: un Markdown listo para NotebookLM, `jsonl` para embeddings y un `_menus.jsonl` separado con platos, precios y alérgenos.",
-      "TODO(metric): lugares extraídos / corridas semanales",
     ],
   },
 };

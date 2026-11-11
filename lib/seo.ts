@@ -39,10 +39,7 @@ export function personJsonLd() {
     name: site.name,
     jobTitle: "AI & Full-stack Engineer",
     url: siteUrl,
-    sameAs: [
-      "https://github.com/OswaldoRodriguez123",
-      // TODO(linkedin): add LinkedIn profile URL once the user provides it
-    ],
+    sameAs: [site.github, site.linkedin],
   };
 }
 

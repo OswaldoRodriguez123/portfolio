@@ -9,12 +9,30 @@ export function ContactCta() {
       <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
         {t("contactBody")}
       </p>
-      <a
-        href={`mailto:${site.email}`}
-        className="inline-flex h-11 items-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2"
-      >
-        {t("email")}
-      </a>
+      <div className="flex flex-wrap items-center gap-3">
+        <a
+          href={`mailto:${site.email}`}
+          className="inline-flex h-11 items-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          {t("email")}
+        </a>
+        <a
+          href={site.github}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex h-11 items-center rounded-lg border border-border px-5 text-sm font-medium text-foreground transition-colors hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          GitHub
+        </a>
+        <a
+          href={site.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex h-11 items-center rounded-lg border border-border px-5 text-sm font-medium text-foreground transition-colors hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          LinkedIn
+        </a>
+      </div>
     </div>
   );
 }
