@@ -35,7 +35,15 @@
     "approach": "Enfoque",
     "results": "Resultados",
     "live": "Demo",
-    "code": "Código"
+    "code": "Código",
+    "prev": "Proyecto anterior",
+    "next": "Proyecto siguiente",
+    "backToProjects": "Todos los proyectos"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o fue movida.",
+    "home": "Volver al inicio"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",

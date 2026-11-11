@@ -35,7 +35,15 @@
     "approach": "Approach",
     "results": "Results",
     "live": "Live",
-    "code": "Code"
+    "code": "Code",
+    "prev": "Previous project",
+    "next": "Next project",
+    "backToProjects": "All projects"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for doesn’t exist or was moved.",
+    "home": "Back to home"
   },
   "footer": {
     "rights": "All rights reserved.",
