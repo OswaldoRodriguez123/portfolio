@@ -10,8 +10,21 @@
   },
   "home": {
     "headline": "I build AI products for real teams",
+    "heroCta": "See my work",
     "viewAllProjects": "View all projects",
-    "email": "Email me"
+    "email": "Email me",
+    "featuredTitle": "Featured projects",
+    "aboutTitle": "About",
+    "aboutP1": "Full-stack and AI engineer based in Santiago, Chile. I ship production web apps and AI-assisted pipelines end to end: from schema design and auth to LLM classification and deployment.",
+    "aboutP2": "I have delivered for a real client (a psychology practice in production), built my own products (a dance-school directory with a human-in-the-loop data pipeline) and open-sourced tools for my own workflows, like a junk-mail triage CLI. This portfolio is the index of that work.",
+    "stackTitle": "Stack",
+    "stackLanguages": "Languages",
+    "stackFrontend": "Frontend",
+    "stackBackend": "Backend",
+    "stackDataAI": "Data / AI",
+    "stackInfra": "Infra",
+    "contactTitle": "Let's build something",
+    "contactBody": "I'm open to remote, USD-paid roles: AI engineering, full-stack product work, or a bit of both."
   },
   "projects": {
     "title": "Projects",

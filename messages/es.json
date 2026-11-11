@@ -10,8 +10,21 @@
   },
   "home": {
     "headline": "Construyo productos con IA para equipos reales",
+    "heroCta": "Ver mi trabajo",
     "viewAllProjects": "Ver todos los proyectos",
-    "email": "Escríbeme"
+    "email": "Escríbeme",
+    "featuredTitle": "Proyectos destacados",
+    "aboutTitle": "Sobre mí",
+    "aboutP1": "Ingeniero full-stack e IA en Santiago de Chile. Llevo a producción aplicaciones web y pipelines con IA de punta a punta: desde el diseño del esquema y la autenticación hasta la clasificación con LLMs y el despliegue.",
+    "aboutP2": "He entregado para un cliente real (una consulta de psicología en producción), he construido mis propios productos (un directorio de escuelas de baile con un pipeline de datos con aprobación humana) y he abierto herramientas para mis propios flujos, como un CLI para triar el correo basura. Este portafolio es el índice de ese trabajo.",
+    "stackTitle": "Stack",
+    "stackLanguages": "Lenguajes",
+    "stackFrontend": "Frontend",
+    "stackBackend": "Backend",
+    "stackDataAI": "Datos / IA",
+    "stackInfra": "Infra",
+    "contactTitle": "Construyamos algo",
+    "contactBody": "Abierto a roles remotos pagados en USD: ingeniería de IA, producto full-stack, o un poco de ambos."
   },
   "projects": {
     "title": "Proyectos",

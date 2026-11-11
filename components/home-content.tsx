@@ -1,0 +1,55 @@
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { getFeaturedProjects } from "@/lib/content";
+import type { Locale } from "@/content/types";
+import { Section } from "@/components/section";
+import { Hero } from "@/components/hero";
+import { ProjectCard } from "@/components/project-card";
+import { StackList } from "@/components/stack-list";
+import { ContactCta } from "@/components/contact-cta";
+
+export function HomeContent({ locale }: { locale: Locale }) {
+  const t = useTranslations("home");
+  const featured = getFeaturedProjects(locale, 3);
+
+  return (
+    <>
+      <Section className="pb-6 pt-10 sm:pt-14">
+        <Hero />
+      </Section>
+
+      <Section id="featured" title={t("featuredTitle")}>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((project) => (
+            <ProjectCard key={project.slug} project={project} locale={locale} />
+          ))}
+        </div>
+        <p className="mt-8">
+          <Link
+            href="/projects"
+            className="rounded-sm text-sm font-medium text-foreground underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            {t("viewAllProjects")} →
+          </Link>
+        </p>
+      </Section>
+
+      <Section id="about" title={t("aboutTitle")}>
+        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-muted-foreground">
+          <p>{t("aboutP1")}</p>
+          <p>{t("aboutP2")}</p>
+        </div>
+      </Section>
+
+      <Section id="stack" title={t("stackTitle")}>
+        <StackList />
+      </Section>
+
+      <Section id="contact" title={t("contactTitle")}>
+        <div className="mt-6">
+          <ContactCta />
+        </div>
+      </Section>
+    </>
+  );
+}
