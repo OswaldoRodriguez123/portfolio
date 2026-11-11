@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# portfolio
 
-## Getting Started
+Personal portfolio of **Oswaldo Rodríguez** — AI & full-stack engineer. A bilingual (EN/ES), statically generated site with case studies for real, shipped projects.
 
-First, run the development server:
+Live: https://oswaldorodriguez.vercel.app
+
+## Stack
+
+- Next.js (App Router, static prerender + PPR) with TypeScript `strict` + `noUncheckedIndexedAccess`
+- Tailwind CSS v4 and shadcn-style components
+- next-intl for EN/ES routing (`/en`, `/es`; `/` redirects to `/en`)
+- Vitest + Testing Library for unit tests, Playwright (+ axe-core) for end-to-end and accessibility
+- Deployed on Vercel
+
+## Requirements
+
+- Node.js 20 or newer (see `.nvmrc`)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000> — you will be redirected to `/en`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command            | What it does                                        |
+| ------------------ | --------------------------------------------------- |
+| `npm run dev`      | Start the dev server                                |
+| `npm run build`    | Production build                                    |
+| `npm start`        | Serve the production build                          |
+| `npm run lint`     | ESLint                                              |
+| `npm run typecheck`| `tsc --noEmit`                                      |
+| `npm test`         | Unit tests (Vitest)                                 |
+| `npm run e2e`      | End-to-end tests (Playwright, Chromium)             |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+app/                # App Router routes ([locale] segment, sitemap, robots, OG image)
+components/         # UI components (server components where possible)
+content/            # Typed project content, validated at import time
+  projects/         # One module per project; add new ones here
+  work.ts           # Work history entries
+i18n/               # next-intl routing and request config
+lib/                # site config, SEO helpers, content queries
+messages/           # EN/ES message catalogs
+tests/              # Vitest unit tests (tests/render.tsx renders with intl)
+e2e/                # Playwright e2e + accessibility specs
+public/projects/    # Project screenshots/covers
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding a project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Copy an existing module in `content/projects/` (e.g. `psico-yerma.ts`) to `<slug>.ts`.
+2. Fill in **both locales** (`en` and `es`): `tagline` (≤ 120 chars), `role`, `problem` (2–4 paragraphs), `approach` (3–5 `{ title, body }` decision blocks) and `results` (2–4 bullets). If a metric is not verified, write `TODO(metric)` instead of inventing one.
+3. Import it in `content/projects/index.ts` and add it to the `projects` array.
+4. If the project has a public demo, capture the home page at 1440×900, convert it to WebP (≤ 200 KB) into `public/projects/<slug>.webp` and set `cover` in the module. Do **not** link to dead or private URLs — use screenshots instead.
+5. Run `npm test` — `validateProject` runs at import time and fails the build/tests if EN or ES content is incomplete.
 
-## Deploy on Vercel
+## Testing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+CI runs lint, typecheck, unit tests, a production build and the Playwright suite on every push and PR (see `.github/workflows/ci.yml`).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+The site deploys on Vercel with zero configuration beyond importing the repository:
+
+1. Push this repository to GitHub.
+2. In Vercel, "Add New… → Project" and import the repo. Framework preset: **Next.js**. No environment variables are required.
+3. Every push to `main` redeploys production; PRs get preview deployments.
+
+Optional: set `NEXT_PUBLIC_SITE_URL` (e.g. `https://your.domain`) in the Vercel project settings if you use a custom domain, then update it in your DNS. The SEO metadata (canonical, sitemap, hreflang) is generated from this value.
+
+## License
+
+MIT
