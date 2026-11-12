@@ -5,7 +5,7 @@ export function SiteFooter() {
   const t = useTranslations("footer");
 
   return (
-    <footer className="border-t border-border">
+    <footer className="border-t border-line">
       <div className="mx-auto flex min-h-16 w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm text-muted-foreground sm:flex-nowrap sm:px-6">
         <p>
           © Oswaldo Rodríguez. {t("rights")}
@@ -15,7 +15,7 @@ export function SiteFooter() {
             href={site.github}
             target="_blank"
             rel="noreferrer"
-            className="rounded-sm hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
+            className="rounded-sm transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             GitHub
           </a>
@@ -23,13 +23,13 @@ export function SiteFooter() {
             href={site.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="rounded-sm hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
+            className="rounded-sm transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             LinkedIn
           </a>
           <a
             href={`mailto:${site.email}`}
-            className="rounded-sm hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
+            className="rounded-sm transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             Email
           </a>
