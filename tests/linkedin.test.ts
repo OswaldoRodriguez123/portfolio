@@ -281,6 +281,51 @@ describe("buildProposal", () => {
     expect(result.work.onlyLocally).toEqual([]);
   });
 
+  it("empareja por empresa cuando el título de LinkedIn incluye el cliente", () => {
+    const result = buildProposal({
+      linkedin: parseLinkedinExport({
+        positions:
+          "Company Name,Title,Started On,Finished On\nParetisa,Software Engineer Consultant - Client Zumba,Aug 2023,\n",
+      }),
+      about: current.about,
+      work: [
+        {
+          company: "Paretisa",
+          role: "Software Engineer Consultant",
+          period: "2023 — Present",
+        },
+      ],
+    });
+
+    expect(result.work.onlyInLinkedin).toEqual([]);
+    expect(result.work.onlyLocally).toEqual([]);
+    expect(result.work.periodMismatch).toEqual([]);
+    expect(result.work.titleMismatch).toEqual([
+      {
+        company: "Paretisa",
+        linkedin: "Software Engineer Consultant - Client Zumba",
+        local: "Software Engineer Consultant",
+      },
+    ]);
+  });
+
+  it("con dos puestos en la misma empresa empareja por título", () => {
+    const result = buildProposal({
+      linkedin: parseLinkedinExport({
+        positions:
+          "Company Name,Title,Started On,Finished On\nAcme,Engineer,2015,2019\nAcme,Senior Engineer,2019,2023\n",
+      }),
+      about: current.about,
+      work: [{ company: "Acme", role: "Senior Engineer", period: "2019 — 2023" }],
+    });
+
+    expect(result.work.onlyInLinkedin.map((position) => position.title)).toEqual([
+      "Engineer",
+    ]);
+    expect(result.work.onlyLocally).toEqual([]);
+    expect(result.work.titleMismatch).toEqual([]);
+  });
+
   it("incluye skills y proyectos tal como vienen del export", () => {
     expect(proposal.skills).toEqual(["TypeScript", "Node.js", "Python, pandas"]);
     expect(proposal.projects[0]?.title).toBe("Portfolio");

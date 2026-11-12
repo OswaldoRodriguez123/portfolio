@@ -25,7 +25,8 @@
     "stackDataAI": "Data / AI",
     "stackInfra": "Infra",
     "contactTitle": "Let's build something",
-    "contactBody": "I'm open to remote, USD-paid roles: AI engineering, full-stack product work, or a bit of both."
+    "contactBody": "I'm open to remote, USD-paid roles: AI engineering, full-stack product work, or a bit of both.",
+    "clientLabel": "Client"
   },
   "projects": {
     "title": "Projects",

@@ -141,6 +141,11 @@ function report(result, file) {
   if (jobs.onlyLocally.length > 0) {
     lines.push(`[linkedin] only in content/work.ts: ${jobs.onlyLocally.map(describe).join("; ")}`);
   }
+  for (const mismatch of jobs.titleMismatch) {
+    lines.push(
+      `[linkedin] title differs — ${mismatch.company}: LinkedIn "${mismatch.linkedin}", work.ts "${mismatch.local}"`,
+    );
+  }
   for (const mismatch of jobs.periodMismatch) {
     lines.push(
       `[linkedin] period differs — ${mismatch.company} / ${mismatch.role}: LinkedIn ${formatPeriod(mismatch.linkedin)}, work.ts ${formatPeriod(mismatch.local)}`,

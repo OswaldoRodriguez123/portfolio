@@ -25,7 +25,8 @@
     "stackDataAI": "Datos / IA",
     "stackInfra": "Infra",
     "contactTitle": "Construyamos algo",
-    "contactBody": "Abierto a roles remotos pagados en USD: ingeniería de IA, producto full-stack, o un poco de ambos."
+    "contactBody": "Abierto a roles remotos pagados en USD: ingeniería de IA, producto full-stack, o un poco de ambos.",
+    "clientLabel": "Cliente"
   },
   "projects": {
     "title": "Proyectos",

@@ -70,6 +70,11 @@ export type Proposal = {
       linkedin: Period;
       local: Period;
     }[];
+    titleMismatch: {
+      company: string;
+      linkedin: string;
+      local: string;
+    }[];
   };
   skills: string[];
   projects: LinkedinProject[];
@@ -271,13 +276,10 @@ export function buildProposal({
   const matched = new Set<string>();
   const onlyInLinkedin: LinkedinPosition[] = [];
   const periodMismatch: Proposal["work"]["periodMismatch"] = [];
+  const titleMismatch: Proposal["work"]["titleMismatch"] = [];
 
   for (const position of linkedin.positions) {
-    const entry = work.find(
-      (candidate) =>
-        jobKey(candidate.company, candidate.role) ===
-        jobKey(position.company, position.title),
-    );
+    const entry = findEntry(position, work, linkedin.positions);
 
     if (!entry) {
       onlyInLinkedin.push(position);
@@ -285,6 +287,14 @@ export function buildProposal({
     }
 
     matched.add(jobKey(entry.company, entry.role));
+
+    if (!sameRole(entry.role, position.title)) {
+      titleMismatch.push({
+        company: entry.company,
+        linkedin: position.title,
+        local: entry.role,
+      });
+    }
 
     const linkedinPeriod = periodFromDates(position.startedOn, position.finishedOn);
     const localPeriod = parsePeriod(entry.period);
@@ -318,6 +328,7 @@ export function buildProposal({
       onlyInLinkedin,
       onlyLocally,
       periodMismatch,
+      titleMismatch,
     },
     skills: linkedin.skills,
     projects: linkedin.projects,
@@ -356,6 +367,36 @@ function yearFrom(value: string): number | null {
 
 function jobKey(company: string, role: string): string {
   return `${company.trim().toLowerCase()}|${role.trim().toLowerCase()}`;
+}
+
+/**
+ * A single entry per company is matched by company alone: LinkedIn often folds
+ * the end client into the title (`… - Client Zumba`) and reports a slightly
+ * different wording for the same job. Several entries at one company (a
+ * promotion) are matched by title instead.
+ */
+function findEntry(
+  position: LinkedinPosition,
+  work: WorkLike[],
+  positions: LinkedinPosition[],
+): WorkLike | undefined {
+  const company = position.company.trim().toLowerCase();
+  const sameCompany = work.filter(
+    (entry) => entry.company.trim().toLowerCase() === company,
+  );
+  const sameCompanyPositions = positions.filter(
+    (candidate) => candidate.company.trim().toLowerCase() === company,
+  );
+
+  if (sameCompany.length === 1 && sameCompanyPositions.length === 1) {
+    return sameCompany[0];
+  }
+
+  return sameCompany.find((entry) => sameRole(entry.role, position.title));
+}
+
+function sameRole(left: string, right: string): boolean {
+  return left.trim().toLowerCase() === right.trim().toLowerCase();
 }
 
 function sameText(left: string[], right: string[]): boolean {

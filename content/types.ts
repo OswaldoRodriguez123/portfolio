@@ -24,6 +24,8 @@ export type ProjectView = Project & { content: LocalizedContent };
 
 export type WorkEntry = {
   company: string;
+  /** End client, when the company is a consultancy. */
+  client?: string;
   role: string;
   period: string;
   summary: Record<Locale, string>;

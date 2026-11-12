@@ -66,7 +66,7 @@ npm run import:linkedin -- ~/Downloads/Basic_LinkedInDataExport.zip
 
 - the About text split into paragraphs — LinkedIn flattens paragraph breaks into runs of two spaces and keeps bullets inline as `•\t`, so both are normalised;
 - `about.status` (`identical` / `different` / `no-summary`) against `home.aboutP1`/`aboutP2` in `messages/*.json`;
-- positions that are only on LinkedIn, only in `content/work.ts`, or matched with a different period (compared by year, empty `Finished On` = present);
+- positions that are only on LinkedIn, only in `content/work.ts`, or matched with a different title or period (periods compared by year, empty `Finished On` = present; a single job per company is matched by company, because LinkedIn folds the client into the title);
 - the skill list and projects.
 
 It **never edits the site**: translating the About text into Spanish is a human decision, so the script stops at the proposal. Copy what you want into `messages/en.json` and `messages/es.json` by hand.
