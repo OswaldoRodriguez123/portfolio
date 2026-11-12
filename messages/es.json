@@ -25,9 +25,9 @@
     "stackTitle": "Stack",
     "stackLanguages": "Lenguajes",
     "stackFrontend": "Frontend",
-    "stackBackend": "Backend",
-    "stackDataAI": "Datos / IA",
-    "stackInfra": "Infra",
+    "stackBackend": "Backend y datos",
+    "stackAI": "IA y LLM",
+    "stackCloud": "Cloud y prácticas",
     "contactTitle": "Construyamos algo",
     "contactBody": "Abierto a roles remotos pagados en USD: ingeniería de IA, producto full-stack, o un poco de ambos.",
     "clientLabel": "Cliente"

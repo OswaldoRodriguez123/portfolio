@@ -25,9 +25,9 @@
     "stackTitle": "Stack",
     "stackLanguages": "Languages",
     "stackFrontend": "Frontend",
-    "stackBackend": "Backend",
-    "stackDataAI": "Data / AI",
-    "stackInfra": "Infra",
+    "stackBackend": "Backend and data",
+    "stackAI": "AI and LLM",
+    "stackCloud": "Cloud and practices",
     "contactTitle": "Let's build something",
     "contactBody": "I'm open to remote, USD-paid roles: AI engineering, full-stack product work, or a bit of both.",
     "clientLabel": "Client"
