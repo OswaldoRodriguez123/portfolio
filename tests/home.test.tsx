@@ -93,8 +93,12 @@ describe("HomeContent", () => {
     ).toBeInTheDocument();
     const email = screen.getByText(site.email);
     expect(email.closest("a")).toHaveAttribute("href", `mailto:${site.email}`);
-    expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", site.linkedin);
-    expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("href", site.github);
+    expect(
+      screen.getByRole("link", { name: /^LinkedIn \(Opens in a new tab\)$/ }),
+    ).toHaveAttribute("href", site.linkedin);
+    expect(
+      screen.getByRole("link", { name: /^GitHub \(Opens in a new tab\)$/ }),
+    ).toHaveAttribute("href", site.github);
   });
 
   it("traduce el cierre", () => {

@@ -24,6 +24,7 @@ export function ProjectRow({
   locale: Locale;
 }) {
   const t = useTranslations("project");
+  const tA11y = useTranslations("a11y");
   const { content } = project;
   const titleId = `project-${project.slug}-title`;
   const problem = content.problem[0];
@@ -99,7 +100,8 @@ export function ProjectRow({
             aria-describedby={titleId}
             className="rounded-sm text-foreground underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            {t("live")}
+            {t("live")}{" "}
+            <span className="sr-only">({tA11y("opensInNewTab")})</span>
           </a>
         ) : null}
         {project.links.repo ? (
@@ -110,7 +112,8 @@ export function ProjectRow({
             aria-describedby={titleId}
             className="rounded-sm text-foreground underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            {t("code")}
+            {t("code")}{" "}
+            <span className="sr-only">({tA11y("opensInNewTab")})</span>
           </a>
         ) : null}
       </div>

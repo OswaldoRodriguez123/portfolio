@@ -40,7 +40,7 @@ export default async function OpenGraphImage() {
             lineHeight: 1.3,
           }}
         >
-          AI and Full-stack Engineer
+          AI and full-stack engineer
         </div>
         <div
           style={{

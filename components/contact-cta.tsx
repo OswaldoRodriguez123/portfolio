@@ -7,6 +7,7 @@ import { site } from "@/lib/site";
  */
 export function ContactCta() {
   const t = useTranslations("home");
+  const tA11y = useTranslations("a11y");
 
   return (
     <div className="border-t border-line pt-8">
@@ -26,7 +27,8 @@ export function ContactCta() {
           rel="noreferrer"
           className="rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          LinkedIn
+          LinkedIn{" "}
+          <span className="sr-only">({tA11y("opensInNewTab")})</span>
         </a>
         <a
           href={site.github}
@@ -34,7 +36,8 @@ export function ContactCta() {
           rel="noreferrer"
           className="rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          GitHub
+          GitHub{" "}
+          <span className="sr-only">({tA11y("opensInNewTab")})</span>
         </a>
       </div>
     </div>

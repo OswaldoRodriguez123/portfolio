@@ -17,6 +17,7 @@ export function CaseStudy({
   locale: Locale;
 }) {
   const t = useTranslations("project");
+  const tA11y = useTranslations("a11y");
   const { content } = project;
 
   const all = getAllProjects(locale);
@@ -63,7 +64,8 @@ export function CaseStudy({
               rel="noreferrer"
               className="inline-flex h-10 items-center rounded-sm bg-primary px-4 font-display text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              {t("live")}
+              {t("live")}{" "}
+              <span className="sr-only">({tA11y("opensInNewTab")})</span>
             </a>
           ) : null}
           {project.links.repoUi ? (
@@ -73,7 +75,8 @@ export function CaseStudy({
               rel="noreferrer"
               className="inline-flex h-10 items-center rounded-sm border border-border bg-background px-4 font-display text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              {t("codeUi")}
+              {t("codeUi")}{" "}
+              <span className="sr-only">({tA11y("opensInNewTab")})</span>
             </a>
           ) : null}
           {project.links.repo ? (
@@ -83,7 +86,8 @@ export function CaseStudy({
               rel="noreferrer"
               className="inline-flex h-10 items-center rounded-sm border border-border bg-background px-4 font-display text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              {t("code")}
+              {t("code")}{" "}
+              <span className="sr-only">({tA11y("opensInNewTab")})</span>
             </a>
           ) : null}
         </div>

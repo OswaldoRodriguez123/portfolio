@@ -21,6 +21,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     locale,
+    absoluteTitle: t("title"),
     description: t("description"),
     path: "/",
   });

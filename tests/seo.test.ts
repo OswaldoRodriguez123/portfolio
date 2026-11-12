@@ -60,4 +60,27 @@ describe("seo", () => {
     expect(metadata.openGraph?.description).toBe(ES_DESCRIPTION);
     expect(es.meta.description).toBe(ES_DESCRIPTION);
   });
+
+  it("el título absoluto localiza la home sin duplicar el nombre", () => {
+    const spanish = buildMetadata({
+      locale: "es",
+      absoluteTitle: es.meta.title,
+      description: es.meta.description,
+      path: "/",
+    });
+    expect(spanish.title).toEqual({ absolute: es.meta.title });
+    expect(spanish.openGraph?.title).toBe(es.meta.title);
+    expect(spanish.twitter?.title).toBe(es.meta.title);
+    expect(es.meta.title).toContain("Ingeniero de IA");
+
+    const english = buildMetadata({
+      locale: "en",
+      absoluteTitle: en.meta.title,
+      description: en.meta.description,
+      path: "/",
+    });
+    expect(english.title).toEqual({ absolute: en.meta.title });
+    expect(english.openGraph?.title).toBe(en.meta.title);
+    expect(en.meta.title).toContain("AI and Full-stack Engineer");
+  });
 });

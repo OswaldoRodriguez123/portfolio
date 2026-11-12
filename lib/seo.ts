@@ -76,21 +76,27 @@ export function webSiteJsonLd() {
 export function buildMetadata({
   locale,
   title,
+  absoluteTitle,
   description,
   path,
 }: {
   locale: string;
   title?: string;
+  absoluteTitle?: string;
   description: string;
   path: string;
 }): Metadata {
   const normalizedPath = path === "/" ? "" : path;
   const urlFor = (l: string) => `${siteUrl}/${l}${normalizedPath}`;
   const canonical = urlFor(locale);
-  const ogTitle = title ?? siteTitle;
+  const ogTitle = absoluteTitle ?? title ?? siteTitle;
 
   return {
-    ...(title ? { title } : {}),
+    ...(absoluteTitle
+      ? { title: { absolute: absoluteTitle } }
+      : title
+        ? { title }
+        : {}),
     description,
     alternates: {
       canonical,

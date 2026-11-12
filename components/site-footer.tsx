@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 
 export function SiteFooter() {
   const t = useTranslations("footer");
+  const tA11y = useTranslations("a11y");
 
   return (
     <footer className="border-t border-line">
@@ -17,7 +18,8 @@ export function SiteFooter() {
             rel="noreferrer"
             className="rounded-sm transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            GitHub
+            GitHub{" "}
+            <span className="sr-only">({tA11y("opensInNewTab")})</span>
           </a>
           <a
             href={site.linkedin}
@@ -25,7 +27,8 @@ export function SiteFooter() {
             rel="noreferrer"
             className="rounded-sm transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            LinkedIn
+            LinkedIn{" "}
+            <span className="sr-only">({tA11y("opensInNewTab")})</span>
           </a>
           <a
             href={`mailto:${site.email}`}

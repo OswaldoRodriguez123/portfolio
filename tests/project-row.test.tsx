@@ -46,7 +46,9 @@ describe("ProjectRow", () => {
     expect(
       screen.getByRole("link", { name: title }),
     ).toHaveAttribute("href", "/en/projects/mail-triage");
-    const repoLink = screen.getByRole("link", { name: "Code" });
+    const repoLink = screen.getByRole("link", {
+      name: /^Code \(Opens in a new tab\)$/,
+    });
     expect(repoLink).toHaveAttribute(
       "href",
       "https://github.com/OswaldoRodriguez123/mail-triage",

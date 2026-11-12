@@ -17,7 +17,6 @@
     "heroStack": "TypeScript, PHP, AWS, React and LLM services.",
     "heroNow": "Since 2023 I build AI products for Zumba through Paretisa.",
     "heroCtaWork": "See the work",
-    "heroCta": "See my work",
     "viewAllProjects": "View all projects",
     "email": "Email me",
     "projectsTitle": "Selected work",
@@ -64,5 +63,8 @@
   "meta": {
     "title": "Oswaldo Rodríguez — AI and Full-stack Engineer",
     "description": "AI and full-stack engineer in Santiago, Chile. Ten years building production web systems and applied AI: TypeScript, PHP, AWS, React and LLM services, with Zumba as a client since 2023."
+  },
+  "a11y": {
+    "opensInNewTab": "Opens in a new tab"
   }
 }
