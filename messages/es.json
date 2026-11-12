@@ -17,7 +17,7 @@
     "heroCta": "Ver mi trabajo",
     "viewAllProjects": "Ver todos los proyectos",
     "email": "Escríbeme",
-    "featuredTitle": "Proyectos destacados",
+    "projectsTitle": "Trabajo seleccionado",
     "aboutTitle": "Sobre mí",
     "aboutP1": "Ingeniero full-stack e IA en Santiago de Chile, con más de 10 años de experiencia. Trabajo de punta a punta: diseño del esquema y autenticación, APIs, infraestructura serverless en AWS y las interfaces en React que van encima. Desde 2023 consulto para Zumba a través de Paretisa, construyendo productos con IA.",
     "aboutP2": "Antes pasé una década en software financiero y de salud, trabajando con equipos de producto, UX y QA y formando a desarrolladores junior. He entregado para un cliente real (una consulta de psicología en producción), he construido mis propios productos (un directorio de escuelas de baile con un pipeline de datos con aprobación humana) y he abierto herramientas para mis flujos de trabajo, como un CLI para triar el correo basura. Este portafolio es el índice de ese trabajo.",

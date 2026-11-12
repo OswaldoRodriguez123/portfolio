@@ -4,7 +4,7 @@ import { getFeaturedProjects } from "@/lib/content";
 import type { Locale } from "@/content/types";
 import { Section } from "@/components/section";
 import { Hero } from "@/components/hero";
-import { ProjectCard } from "@/components/project-card";
+import { ProjectRow } from "@/components/project-row";
 import { StackList } from "@/components/stack-list";
 import { WorkList } from "@/components/work-list";
 import { ContactCta } from "@/components/contact-cta";
@@ -17,10 +17,10 @@ export function HomeContent({ locale }: { locale: Locale }) {
     <>
       <Hero />
 
-      <Section id="featured" title={t("featuredTitle")}>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <Section id="featured" title={t("projectsTitle")}>
+        <div className="mt-4">
           {featured.map((project) => (
-            <ProjectCard key={project.slug} project={project} locale={locale} />
+            <ProjectRow key={project.slug} project={project} locale={locale} />
           ))}
         </div>
         <p className="mt-8">

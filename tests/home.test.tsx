@@ -28,6 +28,31 @@ describe("HomeContent", () => {
     expect(screen.getAllByRole("article")).toHaveLength(3);
   });
 
+  it("cada fila muestra problema, resultado y link al case study", () => {
+    renderWithIntl(<HomeContent locale="en" />);
+    const rows = screen.getAllByRole("article");
+    for (const row of rows) {
+      expect(row.querySelector("a[href^='/en/projects/']")).not.toBeNull();
+    }
+
+    const bailoteca = rows.find((row) =>
+      row.querySelector("a[href='/en/projects/bailoteca']"),
+    );
+    expect(bailoteca).toBeTruthy();
+    expect(bailoteca).toHaveTextContent(/bailoteca/i);
+    expect(bailoteca).toHaveTextContent(
+      /Dance academies in Santiago are scattered across Google Maps/,
+    );
+    expect(bailoteca).toHaveTextContent(/34 listed at the time of writing/);
+  });
+
+  it("titula la sección de proyectos como trabajo seleccionado", () => {
+    renderWithIntl(<HomeContent locale="en" />);
+    expect(
+      screen.getByRole("heading", { name: "Selected work" }),
+    ).toBeInTheDocument();
+  });
+
   it("enlaza a todos los proyectos y a mailto", () => {
     renderWithIntl(<HomeContent locale="en" />);
     expect(screen.getByRole("link", { name: /view all projects/i })).toHaveAttribute(

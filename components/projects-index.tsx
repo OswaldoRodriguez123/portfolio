@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { getAllProjects } from "@/lib/content";
 import type { Locale } from "@/content/types";
-import { ProjectCard } from "@/components/project-card";
+import { ProjectRow } from "@/components/project-row";
 
 export function ProjectsIndex({ locale }: { locale: Locale }) {
   const t = useTranslations("projects");
@@ -15,9 +15,9 @@ export function ProjectsIndex({ locale }: { locale: Locale }) {
       <p className="mt-2 max-w-2xl text-base text-muted-foreground">
         {t("description")}
       </p>
-      <div className="mt-8 grid gap-5 sm:grid-cols-2">
+      <div className="mt-8">
         {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} locale={locale} />
+          <ProjectRow key={project.slug} project={project} locale={locale} />
         ))}
       </div>
     </div>

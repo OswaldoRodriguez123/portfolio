@@ -13,22 +13,45 @@ describe("ProjectsIndex", () => {
     );
   });
 
-  it("un proyecto sin cover renderiza el placeholder con iniciales, no un <img>", () => {
+  it("un proyecto sin cover muestra un placeholder tipográfico con su título", () => {
     const { container } = renderWithIntl(<ProjectsIndex locale="en" />);
-
-    const withoutCover = container
+    const row = container
       .querySelector('a[href="/en/projects/maps-gluten-rag"]')
       ?.closest("article");
-    expect(withoutCover).toBeTruthy();
-    expect(withoutCover!.querySelector("img")).toBeNull();
-    expect(
-      withoutCover!.querySelector('[aria-hidden="true"]'),
-    ).not.toBeNull();
+    expect(row).toBeTruthy();
+    expect(row!.querySelector("img")).toBeNull();
+    // The placeholder is a visible typographic block (title), not initials hidden from AT.
+    expect(row!.querySelector('[aria-hidden="true"]')).toBeNull();
+    const title = "maps-gluten-rag — Maps list to RAG";
+    expect(row!.textContent!.split(title)).toHaveLength(3);
+    expect(row!.textContent).not.toMatch(/MGR/);
+  });
 
-    const withCover = container
+  it("un proyecto con cover renderiza la imagen con el título como alt", () => {
+    const { container } = renderWithIntl(<ProjectsIndex locale="en" />);
+    const row = container
       .querySelector('a[href="/en/projects/psico-yerma"]')
       ?.closest("article");
-    expect(withCover).toBeTruthy();
-    expect(withCover!.querySelector("img")).not.toBeNull();
+    expect(row).toBeTruthy();
+    const img = row!.querySelector("img");
+    expect(img).not.toBeNull();
+    expect(img).toHaveAttribute("src", "/projects/psico-yerma.webp");
+    expect(img!.getAttribute("alt")).toMatch(/psico-yerma/i);
+  });
+
+  it("solo enlaza live y repo cuando la URL existe", () => {
+    const { container } = renderWithIntl(<ProjectsIndex locale="en" />);
+    const withBoth = container
+      .querySelector('a[href="/en/projects/bailoteca"]')
+      ?.closest("article");
+    expect(withBoth!.querySelectorAll("a[target='_blank']")).toHaveLength(2);
+
+    const repoOnly = container
+      .querySelector('a[href="/en/projects/mail-triage"]')
+      ?.closest("article");
+    const external = repoOnly!.querySelectorAll("a[target='_blank']");
+    expect(external).toHaveLength(1);
+    expect(external[0]).toHaveAttribute("href", expect.stringMatching(/github\.com/));
+    expect(repoOnly!.textContent).not.toMatch(/\bLive\b/);
   });
 });
