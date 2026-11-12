@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { getAllProjects, getFeaturedProjects, getProject } from "@/lib/content";
+import {
+  getAllProjects,
+  getFeaturedProjects,
+  getProject,
+  getWorkEntries,
+} from "@/lib/content";
 import { projects, validateProject } from "@/content/projects";
 
 describe("content", () => {
@@ -52,5 +57,34 @@ describe("content", () => {
     expect(() => validateProject(broken)).toThrow(
       `Invalid project content: ${broken.slug}.es.tagline`,
     );
+  });
+
+  it("muestra la trayectoria completa y respeta LinkedIn", () => {
+    const entries = getWorkEntries();
+    expect(entries).toHaveLength(6);
+    expect(entries[0]).toMatchObject({
+      company: "Paretisa",
+      client: "Zumba",
+      role: "Software Engineer Consultant",
+    });
+    expect(entries.map((entry) => entry.role)).toContain(
+      "Semi Senior Financial Software Engineer",
+    );
+    expect(entries.at(-1)).toMatchObject({
+      company: "BIGWISE",
+      role: "Junior Software Programmer",
+      period: "Aug 2015 — Apr 2016",
+    });
+  });
+
+  it("no inventa logros para Easy Dance ni BIGWISE", () => {
+    const entries = getWorkEntries().filter((entry) =>
+      ["Easy Dance", "BIGWISE"].includes(entry.company),
+    );
+    expect(entries).toHaveLength(2);
+    for (const entry of entries) {
+      expect(entry.summary).toBeUndefined();
+      expect(entry.highlights ?? []).toHaveLength(0);
+    }
   });
 });

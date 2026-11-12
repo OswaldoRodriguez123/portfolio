@@ -28,6 +28,7 @@ export type WorkEntry = {
   client?: string;
   role: string;
   period: string;
-  summary: Record<Locale, string>;
-  highlights: Record<Locale, string[]>;
+  location?: string;
+  summary?: Record<Locale, string>;
+  highlights?: Record<Locale, string[]>;
 };

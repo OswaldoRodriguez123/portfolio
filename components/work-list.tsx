@@ -14,7 +14,7 @@ export function WorkList({ locale }: { locale: Locale }) {
     <ol className="mt-8 space-y-6">
       {entries.map((entry) => (
         <li
-          key={entry.summary.en}
+          key={`${entry.company}-${entry.period}`}
           className="rounded-xl border border-border bg-card p-5"
         >
           <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -30,14 +30,18 @@ export function WorkList({ locale }: { locale: Locale }) {
               {t("clientLabel")}: {entry.client}
             </p>
           ) : null}
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            {entry.summary[locale]}
-          </p>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground">
-            {entry.highlights[locale].map((highlight) => (
-              <li key={highlight}>{highlight}</li>
-            ))}
-          </ul>
+          {entry.summary ? (
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              {entry.summary[locale]}
+            </p>
+          ) : null}
+          {entry.highlights?.[locale].length ? (
+            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground">
+              {entry.highlights[locale].map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+          ) : null}
         </li>
       ))}
     </ol>
