@@ -48,7 +48,7 @@ The site does not hit the GitHub API at request time. `npm run build` runs `sync
 
 Private repos, forks and archived repos are ignored, even though `/users/{user}/repos` only returns public repos today.
 
-Everything written in `content/projects/*` wins, so a stale `homepage` in a repo can never overwrite a link you set by hand. If the API is down, rate-limited or the file is missing, the site renders exactly what is in `content/projects/*`.
+Everything written in `content/projects/*` wins, so a stale `homepage` in a repo can never overwrite a link you set by hand. If the API is down or rate-limited, the sync deletes the snapshot instead of leaving a stale one behind, and the site renders exactly what is in `content/projects/*`.
 
 Optional: set `GITHUB_TOKEN` (5,000 req/h instead of 60) and `GITHUB_USER` (defaults to `OswaldoRodriguez123`) for the sync step. `GITHUB_SNAPSHOT` points the reader at another snapshot path. Run `npm run sync:github` once if you want the GitHub data in `npm run dev` too; Vercel runs `npm run build`, so production always syncs first.
 
