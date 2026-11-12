@@ -18,12 +18,12 @@ export function WorkList({ locale }: { locale: Locale }) {
           key={`${entry.company}-${entry.period}`}
           className="grid gap-x-6 gap-y-1 border-t border-line py-6 sm:grid-cols-[10rem_1fr]"
         >
-          <div className="text-sm leading-snug">
-            <p className="font-medium tabular-nums text-foreground">
+          <div className="font-display leading-snug">
+            <p className="text-sm font-medium tabular-nums text-foreground">
               {entry.period}
             </p>
             {entry.location ? (
-              <p className="text-muted-foreground">{entry.location}</p>
+              <p className="text-xs text-muted-foreground">{entry.location}</p>
             ) : null}
           </div>
 

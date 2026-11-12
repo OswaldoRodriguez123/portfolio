@@ -21,13 +21,13 @@ export function Hero() {
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
             href={`mailto:${site.email}`}
-            className="inline-flex h-11 items-center rounded-sm bg-on-forest px-5 text-sm font-medium text-forest transition-[background-color] hover:bg-on-forest/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-forest"
+            className="inline-flex h-11 items-center rounded-sm bg-on-forest px-5 font-display text-sm font-medium text-forest transition-[background-color] hover:bg-on-forest/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-forest"
           >
             {t("email")}
           </a>
           <Link
             href="/#projects"
-            className="inline-flex h-11 items-center rounded-sm border border-on-forest/30 px-5 text-sm font-medium text-on-forest transition-[background-color,border-color] hover:bg-on-forest/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-forest"
+            className="inline-flex h-11 items-center rounded-sm border border-on-forest/30 px-5 font-display text-sm font-medium text-on-forest transition-[background-color,border-color] hover:bg-on-forest/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-forest"
           >
             {t("heroCtaWork")}
           </Link>

@@ -16,7 +16,7 @@ export default async function OpenGraphImage() {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundColor: "#0f0f10",
+          backgroundColor: "#0F2A24",
           padding: "80px",
           fontFamily: "sans-serif",
         }}
@@ -26,7 +26,7 @@ export default async function OpenGraphImage() {
             fontSize: 84,
             fontWeight: 700,
             letterSpacing: "-0.03em",
-            color: "#fafafa",
+            color: "#F1F1EA",
             lineHeight: 1.05,
           }}
         >
@@ -36,7 +36,7 @@ export default async function OpenGraphImage() {
           style={{
             marginTop: 24,
             fontSize: 36,
-            color: "#a1a1aa",
+            color: "rgba(241,241,234,0.8)",
             lineHeight: 1.3,
           }}
         >
@@ -46,7 +46,7 @@ export default async function OpenGraphImage() {
           style={{
             marginTop: 48,
             fontSize: 24,
-            color: "#52525b",
+            color: "rgba(241,241,234,0.7)",
             letterSpacing: "0.02em",
           }}
         >

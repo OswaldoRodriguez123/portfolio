@@ -1,6 +1,6 @@
 # portfolio
 
-Personal portfolio of **Oswaldo Rodríguez** — AI & full-stack engineer. A bilingual (EN/ES), statically generated site with case studies for real, shipped projects.
+Personal portfolio of **Oswaldo Rodríguez** — AI and full-stack engineer. A bilingual (EN/ES), statically generated site with case studies for real, shipped projects.
 
 Live: https://oswaldorodriguez.is-a.dev
 
