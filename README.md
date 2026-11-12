@@ -37,6 +37,7 @@ Open <http://localhost:3000> — you will be redirected to `/en`.
 | `npm test`         | Unit tests (Vitest)                                 |
 | `npm run e2e`      | End-to-end tests (Playwright, Chromium)             |
 | `npm run sync:github` | Refresh `content/github-snapshot.json` from the GitHub API |
+| `npm run import:linkedin` | Read a LinkedIn export and propose an About update (never edits) |
 
 ## GitHub facts
 
@@ -51,6 +52,26 @@ Private repos, forks and archived repos are ignored, even though `/users/{user}/
 Everything written in `content/projects/*` wins, so a stale `homepage` in a repo can never overwrite a link you set by hand. If the API is down or rate-limited, the sync deletes the snapshot instead of leaving a stale one behind, and the site renders exactly what is in `content/projects/*`.
 
 Optional: set `GITHUB_TOKEN` (5,000 req/h instead of 60) and `GITHUB_USER` (defaults to `OswaldoRodriguez123`) for the sync step. `GITHUB_SNAPSHOT` points the reader at another snapshot path. Run `npm run sync:github` once if you want the GitHub data in `npm run dev` too; Vercel runs `npm run build`, so production always syncs first.
+
+## LinkedIn import
+
+The About section is not scraped and not read through an API — LinkedIn's API only exposes `openid`/`email` outside the EU/EEA, and scraping profiles breaks its user agreement. The supported path is the member's own data export (Settings & Privacy → Data Privacy → Download your data), which ships `Profile.csv`, `Positions.csv`, `Skills.csv` and `Projects.csv`.
+
+```bash
+npm run import:linkedin -- ~/Downloads/export
+npm run import:linkedin -- ~/Downloads/Basic_LinkedInDataExport.zip
+```
+
+`lib/linkedin.ts` parses the CSVs and `scripts/linkedin-import.mjs` writes `content/linkedin-proposal.json` (gitignored: it is personal data) with:
+
+- the About text split into paragraphs — LinkedIn flattens paragraph breaks into runs of two spaces and keeps bullets inline as `•\t`, so both are normalised;
+- `about.status` (`identical` / `different` / `no-summary`) against `home.aboutP1`/`aboutP2` in `messages/*.json`;
+- positions that are only on LinkedIn, only in `content/work.ts`, or matched with a different period (compared by year, empty `Finished On` = present);
+- the skill list and projects.
+
+It **never edits the site**: translating the About text into Spanish is a human decision, so the script stops at the proposal. Copy what you want into `messages/en.json` and `messages/es.json` by hand.
+
+Column names differ between export versions (`Name` vs `Skill Name`, `Started On` vs `Start Date`), so fields are looked up through aliases. Fixtures in `tests/fixtures/linkedin/` mirror the real headers with invented content.
 
 ## Project structure
 
