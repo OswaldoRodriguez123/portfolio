@@ -183,7 +183,7 @@ describe("repoNameFromUrl", () => {
   });
 
   it("devuelve undefined si el link no es una URL válida", () => {
-    expect(repoNameFromUrl("oswaldorodriguez.vercel.app")).toBeUndefined();
+    expect(repoNameFromUrl("oswaldorodriguez.is-a.dev")).toBeUndefined();
   });
 });
 

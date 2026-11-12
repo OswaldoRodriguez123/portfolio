@@ -2,7 +2,7 @@
 
 Personal portfolio of **Oswaldo Rodríguez** — AI & full-stack engineer. A bilingual (EN/ES), statically generated site with case studies for real, shipped projects.
 
-Live: https://oswaldorodriguez.vercel.app
+Live: https://oswaldorodriguez.is-a.dev
 
 ## Stack
 
@@ -110,7 +110,7 @@ The site deploys on Vercel with zero configuration beyond importing the reposito
 2. In Vercel, "Add New… → Project" and import the repo. Framework preset: **Next.js**. No environment variables are required.
 3. Every push to `main` redeploys production; PRs get preview deployments.
 
-Optional: set `NEXT_PUBLIC_SITE_URL` (e.g. `https://your.domain`) in the Vercel project settings if you use a custom domain, then update it in your DNS. The SEO metadata (canonical, sitemap, hreflang) is generated from this value.
+Optional: set `NEXT_PUBLIC_SITE_URL` (e.g. `https://your.domain`) in the Vercel project settings if you use a custom domain. The SEO metadata (canonical, sitemap, hreflang) is generated from this value; it falls back to `https://oswaldorodriguez.is-a.dev` when unset.
 
 ## License
 

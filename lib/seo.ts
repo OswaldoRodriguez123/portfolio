@@ -4,7 +4,7 @@ import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
 
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://oswaldorodriguez.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://oswaldorodriguez.is-a.dev"
 ).replace(/\/+$/, "");
 
 const STATIC_ROUTES = ["", "/projects"] as const;

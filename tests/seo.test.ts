@@ -4,9 +4,9 @@ import { getSitemapEntries, personJsonLd } from "@/lib/seo";
 describe("seo", () => {
   it("el sitemap incluye ambos locales y los case studies", () => {
     const urls = getSitemapEntries().map((e) => e.url);
-    expect(urls).toContain("https://oswaldorodriguez.vercel.app/en");
+    expect(urls).toContain("https://oswaldorodriguez.is-a.dev/en");
     expect(urls).toContain(
-      "https://oswaldorodriguez.vercel.app/es/projects/psico-yerma",
+      "https://oswaldorodriguez.is-a.dev/es/projects/psico-yerma",
     );
   });
 
