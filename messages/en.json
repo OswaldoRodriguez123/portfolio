@@ -40,6 +40,8 @@
     "problem": "Problem",
     "approach": "Approach",
     "results": "Results",
+    "problemLabel": "Problem",
+    "resultLabel": "Result",
     "live": "Live",
     "code": "Code",
     "codeUi": "Code (UI)",

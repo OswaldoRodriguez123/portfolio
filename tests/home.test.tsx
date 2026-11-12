@@ -44,6 +44,9 @@ describe("HomeContent", () => {
       /Dance academies in Santiago are scattered across Google Maps/,
     );
     expect(bailoteca).toHaveTextContent(/34 listed at the time of writing/);
+    // The two lines are labelled, not distinguished by colour alone (WCAG 1.4.1).
+    expect(bailoteca).toHaveTextContent(/Problem:\s*Dance academies in Santiago/);
+    expect(bailoteca).toHaveTextContent(/Result:\s*Live in production at bailoteca/);
   });
 
   it("titula la sección de proyectos como trabajo seleccionado", () => {

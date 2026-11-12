@@ -56,11 +56,17 @@ export function ProjectRow({
         </h3>
         {problem ? (
           <p className="mt-2 line-clamp-2 font-serif text-sm leading-relaxed text-foreground">
+            <span className="font-display text-xs text-muted-foreground">
+              {t("problemLabel")}:{" "}
+            </span>
             {problem}
           </p>
         ) : null}
         {result ? (
           <p className="mt-1 line-clamp-2 font-serif text-sm leading-relaxed text-muted-foreground">
+            <span className="font-display text-xs text-muted-foreground">
+              {t("resultLabel")}:{" "}
+            </span>
             {result}
           </p>
         ) : null}
