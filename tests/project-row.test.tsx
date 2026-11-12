@@ -31,12 +31,16 @@ describe("ProjectRow", () => {
     expect(row!.querySelector("img")).toBeNull();
     expect(row!.innerHTML).not.toContain("opengraph.githubassets.com");
 
-    // (b) The intended fallback is the visible typographic block with the title.
+    // (b) The intended fallback is a visible typographic block carrying the
+    // year: it adds information instead of repeating the heading below it.
     const block = row!.querySelector("div.aspect-\\[4\\/3\\]");
     expect(block).not.toBeNull();
-    expect(block).toHaveTextContent(title);
-    // Title appears twice: typographic block + heading.
-    expect(row!.textContent!.split(title)).toHaveLength(3);
+    expect(block!.textContent!.trim()).toBe(String(project.year));
+    const heading = row!.querySelector("h3");
+    expect(heading).not.toBeNull();
+    expect(block!.textContent).not.toBe(heading!.textContent);
+    // Title appears once: the heading only.
+    expect(row!.textContent!.split(title)).toHaveLength(2);
 
     // (c) Navigation survives.
     expect(

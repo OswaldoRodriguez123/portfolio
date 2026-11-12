@@ -48,9 +48,11 @@ export function ProjectRow({
           loading="lazy"
         />
       ) : (
+        // No cover: a typographic plate with the year, which the row does not
+        // show anywhere else. The heading just below already carries the title.
         <div className="flex aspect-[4/3] w-full items-end border border-line bg-secondary p-4">
-          <p className="line-clamp-3 font-display text-sm font-medium leading-snug tracking-tight text-muted-foreground">
-            {content.title}
+          <p className="font-display text-3xl leading-none text-muted-foreground">
+            {project.year}
           </p>
         </div>
       )}

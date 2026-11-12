@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ProjectsIndex } from "@/components/projects-index";
+import { getProject } from "@/lib/content";
 import { renderWithIntl } from "./render";
 
 describe("ProjectsIndex", () => {
@@ -13,17 +14,23 @@ describe("ProjectsIndex", () => {
     );
   });
 
-  it("un proyecto sin cover muestra un placeholder tipográfico con su título", () => {
+  it("un proyecto sin cover muestra un bloque tipográfico con su año", () => {
     const { container } = renderWithIntl(<ProjectsIndex locale="en" />);
     const row = container
       .querySelector('a[href="/en/projects/maps-gluten-rag"]')
       ?.closest("article");
     expect(row).toBeTruthy();
     expect(row!.querySelector("img")).toBeNull();
-    // The placeholder is a visible typographic block (title), not initials hidden from AT.
+    // The block is visible typographic content (the year), not initials hidden from AT.
     expect(row!.querySelector('[aria-hidden="true"]')).toBeNull();
-    const title = "maps-gluten-rag — Maps list to RAG";
-    expect(row!.textContent!.split(title)).toHaveLength(3);
+    const year = String(getProject("maps-gluten-rag", "en")!.year);
+    const block = row!.querySelector("div.aspect-\\[4\\/3\\]");
+    expect(block).not.toBeNull();
+    expect(block!.textContent!.trim()).toBe(year);
+    // It carries the year, not a copy of the heading right below it.
+    const heading = row!.querySelector("h3");
+    expect(heading).not.toBeNull();
+    expect(block!.textContent).not.toBe(heading!.textContent);
     expect(row!.textContent).not.toMatch(/MGR/);
   });
 
