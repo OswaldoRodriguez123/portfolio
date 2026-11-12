@@ -15,7 +15,7 @@ export function Hero() {
       </p>
       <div className="flex flex-wrap items-center gap-3">
         <Link
-          href="/projects"
+          href="/#featured"
           className="inline-flex h-11 items-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           {t("heroCta")}
