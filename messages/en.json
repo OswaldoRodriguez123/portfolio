@@ -9,7 +9,11 @@
     "menu": "Menu"
   },
   "home": {
-    "headline": "I build AI products for real teams",
+    "heroRole": "AI and full-stack engineer",
+    "heroBody": "I build production systems end to end: the data model, the API, the infrastructure and the interface.",
+    "heroStack": "TypeScript, PHP, AWS, React and LLM services.",
+    "heroNow": "Since 2023 I build AI products for Zumba through Paretisa.",
+    "heroCtaWork": "See the work",
     "heroCta": "See my work",
     "viewAllProjects": "View all projects",
     "email": "Email me",

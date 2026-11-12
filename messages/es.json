@@ -9,7 +9,11 @@
     "menu": "Menú"
   },
   "home": {
-    "headline": "Construyo productos con IA para equipos reales",
+    "heroRole": "Ingeniero de IA y full-stack",
+    "heroBody": "Construyo sistemas en producción de punta a punta: el modelo de datos, la API, la infraestructura y la interfaz.",
+    "heroStack": "TypeScript, PHP, AWS, React y servicios con LLM.",
+    "heroNow": "Desde 2023 construyo productos con IA para Zumba a través de Paretisa.",
+    "heroCtaWork": "Ver el trabajo",
     "heroCta": "Ver mi trabajo",
     "viewAllProjects": "Ver todos los proyectos",
     "email": "Escríbeme",

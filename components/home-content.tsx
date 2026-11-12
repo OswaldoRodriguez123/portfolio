@@ -15,9 +15,7 @@ export function HomeContent({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <Section className="pb-6 pt-10 sm:pt-14">
-        <Hero />
-      </Section>
+      <Hero />
 
       <Section id="featured" title={t("featuredTitle")}>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
