@@ -8,7 +8,7 @@ export function SiteHeader() {
   const t = useTranslations("nav");
 
   const navLinks = [
-    { href: "/projects", label: t("projects") },
+    { href: "/#featured", label: t("projects") },
     { href: "/#about", label: t("about") },
     { href: "/#contact", label: t("contact") },
   ] as const;

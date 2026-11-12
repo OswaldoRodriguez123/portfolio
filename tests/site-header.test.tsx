@@ -7,7 +7,8 @@ describe("SiteHeader", () => {
   it("expone navegación principal accesible", () => {
     renderWithIntl(<SiteHeader />);
     expect(screen.getByRole("navigation", { name: /main/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /projects/i })).toHaveAttribute("href", "/en/projects");
+    // mock de @/i18n/navigation concatena "/en" + href tal cual → "/en/#featured"
+    expect(screen.getByRole("link", { name: /projects/i })).toHaveAttribute("href", "/en/#featured");
   });
 
   it("incluye un enlace para saltar al contenido", () => {
