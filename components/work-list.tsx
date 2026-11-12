@@ -1,11 +1,13 @@
+import { useTranslations } from "next-intl";
 import { getWorkEntries } from "@/lib/content";
 import type { Locale } from "@/content/types";
 
 /**
- * Work history at Zumba. The repositories are private, so entries describe
- * the systems I worked on instead of linking public code.
+ * Work history. The repositories are private, so entries describe the systems
+ * I worked on instead of linking public code.
  */
 export function WorkList({ locale }: { locale: Locale }) {
+  const t = useTranslations("home");
   const entries = getWorkEntries();
 
   return (
@@ -23,6 +25,11 @@ export function WorkList({ locale }: { locale: Locale }) {
               {entry.period}
             </p>
           </div>
+          {entry.client ? (
+            <p className="mt-1 text-sm font-medium text-foreground/80">
+              {t("clientLabel")}: {entry.client}
+            </p>
+          ) : null}
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
             {entry.summary[locale]}
           </p>

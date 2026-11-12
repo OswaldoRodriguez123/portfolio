@@ -1,18 +1,19 @@
 import type { WorkEntry } from "@/content/types";
 
 /**
- * Work history at Zumba. The repositories are private, so the entry describes
- * the systems, not a link and not unverified numbers. Period comes from the
- * git history of the repositories.
+ * Work history: employed by Paretisa, working for its client Zumba. The
+ * repositories are private, so the entry describes the systems, not a link
+ * and not unverified numbers. Period comes from the git history.
  */
 export const work: WorkEntry[] = [
   {
-    company: "Zumba",
-    role: "Software engineer",
+    company: "Paretisa",
+    client: "Zumba",
+    role: "Software Engineer Consultant",
     period: "2023 — Present",
     summary: {
-      en: "Software engineer at Zumba since 2023, building AI products (Babel AI, ClassBuzz AI): serverless TypeScript backends on AWS defined with AWS CDK, and the Figma tooling around them.",
-      es: "Software engineer en Zumba desde 2023, construyendo productos con IA (Babel AI, ClassBuzz AI): backends serverless en TypeScript sobre AWS definidos con AWS CDK, y el tooling de Figma a su alrededor.",
+      en: "Software engineer consulting for Zumba through Paretisa since 2023, building AI products (Babel AI, ClassBuzz AI): serverless TypeScript backends on AWS defined with AWS CDK, and the Figma tooling around them.",
+      es: "Ingeniero de software consultando para Zumba a través de Paretisa desde 2023, construyendo productos con IA (Babel AI, ClassBuzz AI): backends serverless en TypeScript sobre AWS definidos con AWS CDK, y el tooling de Figma a su alrededor.",
     },
     highlights: {
       en: [
