@@ -3,19 +3,8 @@ import { getAllProjects, getFeaturedProjects, getProject } from "@/lib/content";
 import { projects, validateProject } from "@/content/projects";
 
 describe("content", () => {
-  it("carga los 6 proyectos", () => {
-    expect(getAllProjects("en")).toHaveLength(6);
-  });
-
-  it("el proyecto privado no enlaza repos ni demos", () => {
-    const scaffold = projects.find((project) => project.slug === "private-work-scaffold");
-    expect(scaffold, "falta content/projects/private-work-scaffold.ts").toBeDefined();
-
-    expect(scaffold?.links.repo).toBeUndefined();
-    expect(scaffold?.links.live).toBeUndefined();
-    expect(scaffold?.links.repoUi).toBeUndefined();
-    expect(scaffold?.cover).toBeUndefined();
-    expect(scaffold?.featured).toBe(false);
+  it("carga los 5 proyectos", () => {
+    expect(getAllProjects("en")).toHaveLength(5);
   });
 
   it("ordena por año descendente", () => {

@@ -4,9 +4,9 @@ import { ProjectsIndex } from "@/components/projects-index";
 import { renderWithIntl } from "./render";
 
 describe("ProjectsIndex", () => {
-  it("renderiza los 6 proyectos con enlace al case study", () => {
+  it("renderiza los 5 proyectos con enlace al case study", () => {
     renderWithIntl(<ProjectsIndex locale="en" />);
-    expect(screen.getAllByRole("article")).toHaveLength(6);
+    expect(screen.getAllByRole("article")).toHaveLength(5);
     expect(screen.getByRole("link", { name: /psico-yerma/i })).toHaveAttribute(
       "href",
       "/en/projects/psico-yerma",

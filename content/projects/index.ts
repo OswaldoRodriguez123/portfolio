@@ -4,7 +4,6 @@ import { project as bailoteca } from "./bailoteca";
 import { project as mailTriage } from "./mail-triage";
 import { project as mapsGlutenRag } from "./maps-gluten-rag";
 import { project as arithmeticCalculator } from "./arithmetic-calculator";
-import { project as privateWorkScaffold } from "./private-work-scaffold";
 
 const LOCALES = ["en", "es"] as const;
 const REQUIRED_STRINGS = ["title", "tagline", "role"] as const;
@@ -65,7 +64,6 @@ export const projects: Project[] = [
   mailTriage,
   mapsGlutenRag,
   arithmeticCalculator,
-  privateWorkScaffold,
 ];
 
 projects.forEach(validateProject);

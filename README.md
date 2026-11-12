@@ -74,7 +74,7 @@ public/projects/    # Project screenshots/covers
 1. Copy an existing module in `content/projects/` (e.g. `psico-yerma.ts`) to `<slug>.ts`.
 2. Fill in **both locales** (`en` and `es`): `tagline` (≤ 120 chars), `role`, `problem` (2–4 paragraphs), `approach` (3–5 `{ title, body }` decision blocks) and `results` (2–4 bullets). If a metric is not verified, write `TODO(metric)` instead of inventing one.
 3. Import it in `content/projects/index.ts` and add it to the `projects` array.
-4. If the project has a public demo, capture the home page at 1440×900, convert it to WebP (≤ 200 KB) into `public/projects/<slug>.webp` and set `cover` in the module. Do **not** link to dead or private URLs — use screenshots instead. Without a screenshot the repo's Open Graph image is used (see *GitHub facts*). For private work, ship the case study with **no links at all** — see `content/projects/private-work-scaffold.ts` and its content test.
+4. If the project has a public demo, capture the home page at 1440×900, convert it to WebP (≤ 200 KB) into `public/projects/<slug>.webp` and set `cover` in the module. Do **not** link to dead or private URLs — use screenshots instead. Without a screenshot the repo's Open Graph image is used (see *GitHub facts*). For private work, ship the case study with **no links at all**.
 5. Run `npm test` — `validateProject` runs at import time and fails the build/tests if EN or ES content is incomplete.
 
 ## Testing
