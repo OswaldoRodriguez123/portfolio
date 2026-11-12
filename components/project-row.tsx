@@ -3,6 +3,15 @@ import { Link } from "@/i18n/navigation";
 import type { Locale, ProjectView } from "@/content/types";
 
 /**
+ * GitHub's auto-generated social card (`https://opengraph.githubassets.com/1/
+ * <full_name>`), which `lib/github.ts` fills in for repos that have no cover
+ * of their own. It is a 1200×600 name plate: cropped into the row's 4:3 box
+ * it shows a fragment of the repo name and reads as broken, so the row treats
+ * it as "no cover" and keeps the intended typographic block.
+ */
+const GITHUB_SOCIAL_CARD = /^https:\/\/opengraph\.githubassets\.com\//;
+
+/**
  * One project as a row of the work ledger: a small cover (or a typographic
  * block when there is none), the title, one line of problem, one line of
  * result, the stack and the links. No card, no shadow, no lift.
@@ -20,16 +29,20 @@ export function ProjectRow({
   const problem = content.problem[0];
   const result = content.results[0];
   const stack = project.stack.slice(0, 5).join(", ");
+  const cover =
+    project.cover && !GITHUB_SOCIAL_CARD.test(project.cover)
+      ? project.cover
+      : undefined;
 
   return (
     <article
       lang={locale}
       className="grid gap-6 border-t border-line py-8 sm:grid-cols-[minmax(0,14rem)_1fr_auto]"
     >
-      {project.cover ? (
+      {cover ? (
         // eslint-disable-next-line @next/next/no-img-element -- static export, no next/image loader needed
         <img
-          src={project.cover}
+          src={cover}
           alt={content.title}
           className="aspect-[4/3] w-full border border-line object-cover"
           loading="lazy"
