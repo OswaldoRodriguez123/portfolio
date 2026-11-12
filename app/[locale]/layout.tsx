@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Schibsted_Grotesk, Source_Serif_4 } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -12,13 +12,13 @@ import { JsonLd } from "@/components/json-ld";
 import { isLocale, routing } from "@/i18n/routing";
 import { siteUrl } from "@/lib/seo";
 
-const inter = Inter({
-  variable: "--font-sans",
+const grotesk = Schibsted_Grotesk({
+  variable: "--font-grotesk",
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
+const serif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
 });
 
@@ -51,7 +51,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${grotesk.variable} ${serif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <JsonLd />
