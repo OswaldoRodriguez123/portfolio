@@ -3,45 +3,55 @@ import { getWorkEntries } from "@/lib/content";
 import type { Locale } from "@/content/types";
 
 /**
- * Work history. The repositories are private, so entries describe the systems
- * I worked on instead of linking public code.
+ * Work history as a ledger: dates on a left rail, the stage on the right, one
+ * thin rule per stage. The repositories are private, so entries describe the
+ * systems I worked on instead of linking public code.
  */
 export function WorkList({ locale }: { locale: Locale }) {
   const t = useTranslations("home");
   const entries = getWorkEntries();
 
   return (
-    <ol className="mt-8 space-y-6">
+    <ol className="mt-8">
       {entries.map((entry) => (
         <li
           key={`${entry.company}-${entry.period}`}
-          className="rounded-xl border border-border bg-card p-5"
+          className="grid gap-x-6 gap-y-1 border-t border-line py-6 sm:grid-cols-[10rem_1fr]"
         >
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 className="text-base font-semibold text-foreground">
-              {entry.role} · {entry.company}
-            </h3>
-            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          <div className="text-sm leading-snug">
+            <p className="font-medium tabular-nums text-foreground">
               {entry.period}
             </p>
+            {entry.location ? (
+              <p className="text-muted-foreground">{entry.location}</p>
+            ) : null}
           </div>
-          {entry.client ? (
-            <p className="mt-1 text-sm font-medium text-foreground/80">
-              {t("clientLabel")}: {entry.client}
+
+          <div>
+            <h3 className="font-heading text-base font-semibold tracking-tight text-foreground">
+              {entry.role}
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {entry.company}
             </p>
-          ) : null}
-          {entry.summary ? (
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              {entry.summary[locale]}
-            </p>
-          ) : null}
-          {entry.highlights?.[locale].length ? (
-            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground">
-              {entry.highlights[locale].map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </ul>
-          ) : null}
+            {entry.client ? (
+              <p className="text-sm text-muted-foreground">
+                {t("clientLabel")}: {entry.client}
+              </p>
+            ) : null}
+            {entry.summary ? (
+              <p className="mt-3 max-w-2xl font-serif text-base leading-relaxed text-foreground">
+                {entry.summary[locale]}
+              </p>
+            ) : null}
+            {entry.highlights?.[locale].length ? (
+              <ul className="mt-3 max-w-2xl list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground">
+                {entry.highlights[locale].map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
         </li>
       ))}
     </ol>
