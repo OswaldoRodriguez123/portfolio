@@ -135,6 +135,16 @@ describe("parseLinkedinExport", () => {
     });
   });
 
+  it("acepta la columna About en vez de Summary", () => {
+    const parsed = parseLinkedinExport({
+      profile:
+        'First Name,Last Name,Headline,About\nAna,Pérez,Engineer,"Hola.  Mundo."\n',
+    });
+
+    expect(parsed.profile?.headline).toBe("Engineer");
+    expect(parsed.profile?.summary).toBe("Hola.  Mundo.");
+  });
+
   it("no falla si falta un archivo", () => {
     const parsed = parseLinkedinExport({ profile: exportFiles.profile });
 
@@ -324,6 +334,25 @@ describe("buildProposal", () => {
     ]);
     expect(result.work.onlyLocally).toEqual([]);
     expect(result.work.titleMismatch).toEqual([]);
+  });
+
+  it("empareja una sola entrada local por posición de LinkedIn", () => {
+    const result = buildProposal({
+      linkedin: parseLinkedinExport({
+        positions:
+          "Company Name,Title,Started On,Finished On\nAcme,Engineer,2015,2019\n",
+      }),
+      about: current.about,
+      work: [
+        { company: "Acme", role: "Engineer", period: "2015 — 2019" },
+        { company: "Acme", role: "Engineer", period: "2020 — 2021" },
+      ],
+    });
+
+    expect(result.work.onlyInLinkedin).toEqual([]);
+    expect(result.work.onlyLocally).toEqual([
+      { company: "Acme", role: "Engineer", period: "2020 — 2021" },
+    ]);
   });
 
   it("incluye skills y proyectos tal como vienen del export", () => {

@@ -154,7 +154,7 @@ export function findHeaderRow(rows: string[][], required: string[][]): number {
 
 export function parseLinkedinExport(files: ExportFiles): LinkedinExport {
   const profileTable = files.profile
-    ? readTable(files.profile, [["headline"], ["summary"]])
+    ? readTable(files.profile, [["headline"], ["summary", "about"]])
     : null;
   const positionsTable = files.positions
     ? readTable(files.positions, [
@@ -273,20 +273,21 @@ export function buildProposal({
         ? "identical"
         : "different";
 
-  const matched = new Set<string>();
+  const matched = new Set<number>();
   const onlyInLinkedin: LinkedinPosition[] = [];
   const periodMismatch: Proposal["work"]["periodMismatch"] = [];
   const titleMismatch: Proposal["work"]["titleMismatch"] = [];
 
   for (const position of linkedin.positions) {
-    const entry = findEntry(position, work, linkedin.positions);
+    const index = findEntry(position, work, linkedin.positions, matched);
 
-    if (!entry) {
+    if (index === -1) {
       onlyInLinkedin.push(position);
       continue;
     }
 
-    matched.add(jobKey(entry.company, entry.role));
+    const entry = work[index]!;
+    matched.add(index);
 
     if (!sameRole(entry.role, position.title)) {
       titleMismatch.push({
@@ -312,9 +313,7 @@ export function buildProposal({
     }
   }
 
-  const onlyLocally = work.filter(
-    (entry) => !matched.has(jobKey(entry.company, entry.role)),
-  );
+  const onlyLocally = work.filter((_, index) => !matched.has(index));
 
   return {
     about: {
@@ -365,34 +364,42 @@ function yearFrom(value: string): number | null {
   return match ? Number(match[0]) : null;
 }
 
-function jobKey(company: string, role: string): string {
-  return `${company.trim().toLowerCase()}|${role.trim().toLowerCase()}`;
-}
-
 /**
  * A single entry per company is matched by company alone: LinkedIn often folds
  * the end client into the title (`… - Client Zumba`) and reports a slightly
  * different wording for the same job. Several entries at one company (a
  * promotion) are matched by title instead.
+ *
+ * Matching is one-to-one: an entry already claimed by another position is not
+ * a candidate again, so two stints with the same company and title do not both
+ * disappear from `onlyLocally`. Returns the index in `work`, or -1.
  */
 function findEntry(
   position: LinkedinPosition,
   work: WorkLike[],
   positions: LinkedinPosition[],
-): WorkLike | undefined {
+  matched: Set<number>,
+): number {
   const company = position.company.trim().toLowerCase();
-  const sameCompany = work.filter(
-    (entry) => entry.company.trim().toLowerCase() === company,
-  );
+  const candidates = work
+    .map((entry, index) => ({ entry, index }))
+    .filter(
+      ({ entry, index }) =>
+        !matched.has(index) && entry.company.trim().toLowerCase() === company,
+    );
   const sameCompanyPositions = positions.filter(
     (candidate) => candidate.company.trim().toLowerCase() === company,
   );
 
-  if (sameCompany.length === 1 && sameCompanyPositions.length === 1) {
-    return sameCompany[0];
+  if (candidates.length === 1 && sameCompanyPositions.length === 1) {
+    return candidates[0]!.index;
   }
 
-  return sameCompany.find((entry) => sameRole(entry.role, position.title));
+  const byRole = candidates.find(({ entry }) =>
+    sameRole(entry.role, position.title),
+  );
+
+  return byRole ? byRole.index : -1;
 }
 
 function sameRole(left: string, right: string): boolean {
