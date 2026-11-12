@@ -1,8 +1,11 @@
 {
   "nav": {
+    "work": "Work",
     "projects": "Projects",
+    "stack": "Stack",
     "about": "About",
     "contact": "Contact",
+    "email": "Email",
     "skip": "Skip to content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -29,7 +32,7 @@
     "stackAI": "AI and LLM",
     "stackCloud": "Cloud and practices",
     "contactTitle": "Let's build something",
-    "contactBody": "I'm open to remote, USD-paid roles: AI engineering, full-stack product work, or a bit of both.",
+    "contactBody": "Open to full-time and contract roles, remote. Email is the fastest way to reach me.",
     "clientLabel": "Client"
   },
   "projects": {

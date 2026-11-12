@@ -17,7 +17,11 @@ export function HomeContent({ locale }: { locale: Locale }) {
     <>
       <Hero />
 
-      <Section id="featured" title={t("projectsTitle")}>
+      <Section id="work" title={t("workTitle")}>
+        <WorkList locale={locale} />
+      </Section>
+
+      <Section id="projects" title={t("projectsTitle")}>
         <div className="mt-4">
           {featured.map((project) => (
             <ProjectRow key={project.slug} project={project} locale={locale} />
@@ -28,9 +32,13 @@ export function HomeContent({ locale }: { locale: Locale }) {
             href="/projects"
             className="rounded-sm text-sm font-medium text-foreground underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            {t("viewAllProjects")} →
+            {t("viewAllProjects")}
           </Link>
         </p>
+      </Section>
+
+      <Section id="stack" title={t("stackTitle")}>
+        <StackList />
       </Section>
 
       <Section id="about" title={t("aboutTitle")}>
@@ -38,14 +46,6 @@ export function HomeContent({ locale }: { locale: Locale }) {
           <p>{t("aboutP1")}</p>
           <p>{t("aboutP2")}</p>
         </div>
-      </Section>
-
-      <Section id="work" title={t("workTitle")}>
-        <WorkList locale={locale} />
-      </Section>
-
-      <Section id="stack" title={t("stackTitle")}>
-        <StackList />
       </Section>
 
       <Section id="contact" title={t("contactTitle")}>

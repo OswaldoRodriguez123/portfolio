@@ -1,8 +1,11 @@
 {
   "nav": {
+    "work": "Experiencia",
     "projects": "Proyectos",
+    "stack": "Stack",
     "about": "Sobre mí",
     "contact": "Contacto",
+    "email": "Email",
     "skip": "Saltar al contenido",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
@@ -29,7 +32,7 @@
     "stackAI": "IA y LLM",
     "stackCloud": "Cloud y prácticas",
     "contactTitle": "Construyamos algo",
-    "contactBody": "Abierto a roles remotos pagados en USD: ingeniería de IA, producto full-stack, o un poco de ambos.",
+    "contactBody": "Abierto a roles full-time y por contrato, en remoto. El email es la vía más rápida.",
     "clientLabel": "Cliente"
   },
   "projects": {

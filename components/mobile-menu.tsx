@@ -6,10 +6,15 @@ import { Link } from "@/i18n/navigation";
 
 type NavLink = { href: string; label: string };
 
+const EXTERNAL = /^(?:mailto:|https?:\/\/)/;
+
 export function MobileMenu({ links }: { links: NavLink[] }) {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
   const panelId = useId();
+
+  const itemClass =
+    "block rounded-md px-3 py-2 text-sm font-medium text-popover-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2";
 
   useEffect(() => {
     if (!open) return;
@@ -46,16 +51,27 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
           aria-label={t("menu")}
           className="absolute right-0 top-full mt-2 w-48 rounded-lg border border-border bg-popover p-2 shadow-lg"
         >
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              className="block rounded-md px-3 py-2 text-sm font-medium text-popover-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              {label}
-            </Link>
-          ))}
+          {links.map(({ href, label }) =>
+            EXTERNAL.test(href) ? (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className={itemClass}
+              >
+                {label}
+              </a>
+            ) : (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className={itemClass}
+              >
+                {label}
+              </Link>
+            ),
+          )}
         </nav>
       ) : null}
     </div>

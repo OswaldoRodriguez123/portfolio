@@ -1,36 +1,40 @@
 import { useTranslations } from "next-intl";
 import { site } from "@/lib/site";
 
+/**
+ * The end of the page is a line of prose and the address itself, not a card
+ * with buttons: the fastest path to contact is reading an email and copying it.
+ */
 export function ContactCta() {
   const t = useTranslations("home");
 
   return (
-    <div className="flex flex-col items-start gap-4 rounded-2xl border border-border bg-muted p-8 sm:p-10">
-      <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
+    <div className="border-t border-line pt-8">
+      <p className="max-w-2xl font-serif text-lg leading-relaxed text-foreground">
         {t("contactBody")}
       </p>
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2 text-sm">
         <a
           href={`mailto:${site.email}`}
-          className="inline-flex h-11 items-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2"
+          className="break-all rounded-sm font-medium text-foreground underline underline-offset-4 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          {t("email")}
-        </a>
-        <a
-          href={site.github}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex h-11 items-center rounded-lg border border-border px-5 text-sm font-medium text-foreground transition-colors hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2"
-        >
-          GitHub
+          {site.email}
         </a>
         <a
           href={site.linkedin}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex h-11 items-center rounded-lg border border-border px-5 text-sm font-medium text-foreground transition-colors hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2"
+          className="rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           LinkedIn
+        </a>
+        <a
+          href={site.github}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          GitHub
         </a>
       </div>
     </div>

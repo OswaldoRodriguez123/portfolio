@@ -16,7 +16,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={title ? `${id ?? "section"}-title` : undefined}
-      className={cn("mx-auto w-full max-w-5xl scroll-mt-20 px-4 py-14 sm:px-6 sm:py-20", className)}
+      className={cn("mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14 sm:px-6 sm:py-20", className)}
     >
       {title ? (
         <h2

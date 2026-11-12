@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { HomeContent } from "@/components/home-content";
+import { site } from "@/lib/site";
 import { renderWithIntl } from "./render";
 
 describe("HomeContent", () => {
@@ -58,10 +59,10 @@ describe("HomeContent", () => {
 
   it("enlaza a todos los proyectos y a mailto", () => {
     renderWithIntl(<HomeContent locale="en" />);
-    expect(screen.getByRole("link", { name: /view all projects/i })).toHaveAttribute(
-      "href",
-      "/en/projects",
-    );
+    const viewAll = screen.getByRole("link", { name: /view all projects/i });
+    expect(viewAll).toHaveAttribute("href", "/en/projects");
+    // sin glifos de flecha pegados al texto del link
+    expect(viewAll).toHaveTextContent(/^View all projects$/);
     const emailLinks = screen.getAllByRole("link", { name: /email/i });
     expect(emailLinks.length).toBeGreaterThanOrEqual(1);
     for (const link of emailLinks) {
@@ -69,9 +70,37 @@ describe("HomeContent", () => {
     }
   });
 
-  it("renderiza las secciones about y contact con sus anchors", () => {
+  it("lee el trabajo antes que los proyectos y conserva los cinco anchors", () => {
     const { container } = renderWithIntl(<HomeContent locale="en" />);
-    expect(container.querySelector("#about")).not.toBeNull();
-    expect(container.querySelector("#contact")).not.toBeNull();
+    const ids = ["work", "projects", "stack", "about", "contact"] as const;
+    const nodes = ids.map((id) => container.querySelector(`#${id}`));
+    for (const [index, node] of nodes.entries()) {
+      expect(node, ids[index]).not.toBeNull();
+    }
+    for (let i = 0; i < nodes.length - 1; i += 1) {
+      expect(
+        nodes[i]!.compareDocumentPosition(nodes[i + 1]!) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+        `${ids[i]} antes de ${ids[i + 1]}`,
+      ).toBeTruthy();
+    }
+  });
+
+  it("cierra con el email como texto visible y los perfiles", () => {
+    renderWithIntl(<HomeContent locale="en" />);
+    expect(
+      screen.getByText(/Open to full-time and contract roles, remote\. Email is the fastest way to reach me\./),
+    ).toBeInTheDocument();
+    const email = screen.getByText(site.email);
+    expect(email.closest("a")).toHaveAttribute("href", `mailto:${site.email}`);
+    expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", site.linkedin);
+    expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("href", site.github);
+  });
+
+  it("traduce el cierre", () => {
+    renderWithIntl(<HomeContent locale="es" />, "es");
+    expect(
+      screen.getByText(/Abierto a roles full-time y por contrato, en remoto\. El email es la vía más rápida\./),
+    ).toBeInTheDocument();
   });
 });
