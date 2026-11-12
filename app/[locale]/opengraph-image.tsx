@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
 
-export const alt = "Oswaldo Rodríguez — AI & Full-stack Engineer";
+export const alt = "Oswaldo Rodríguez — AI and Full-stack Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +40,7 @@ export default async function OpenGraphImage() {
             lineHeight: 1.3,
           }}
         >
-          AI & Full-stack Engineer
+          AI and Full-stack Engineer
         </div>
         <div
           style={{
@@ -50,7 +50,7 @@ export default async function OpenGraphImage() {
             letterSpacing: "0.02em",
           }}
         >
-          AI products for real teams — Santiago, Chile
+          Santiago, Chile
         </div>
       </div>
     ),

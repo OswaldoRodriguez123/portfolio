@@ -10,7 +10,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
 import { isLocale, routing } from "@/i18n/routing";
-import { siteUrl } from "@/lib/seo";
+import { siteDescription, siteTitle, siteUrl } from "@/lib/seo";
 
 const grotesk = Schibsted_Grotesk({
   variable: "--font-grotesk",
@@ -25,10 +25,10 @@ const serif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Oswaldo Rodríguez — AI & Full-stack Engineer",
+    default: siteTitle,
     template: "%s — Oswaldo Rodríguez",
   },
-  description: "Portfolio of AI and full-stack projects.",
+  description: siteDescription,
 };
 
 export function generateStaticParams() {

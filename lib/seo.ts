@@ -7,6 +7,11 @@ export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://oswaldorodriguez.is-a.dev"
 ).replace(/\/+$/, "");
 
+export const siteTitle = `${site.name} — AI and Full-stack Engineer`;
+
+export const siteDescription =
+  "AI and full-stack engineer in Santiago, Chile. Ten years building production web systems and applied AI: TypeScript, PHP, AWS, React and LLM services, with Zumba as a client since 2023.";
+
 const STATIC_ROUTES = ["", "/projects"] as const;
 
 export function getSitemapEntries(): MetadataRoute.Sitemap {
@@ -37,9 +42,25 @@ export function personJsonLd() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: site.name,
-    jobTitle: "AI & Full-stack Engineer",
+    jobTitle: "AI and Full-stack Engineer",
     url: siteUrl,
     sameAs: [site.github, site.linkedin],
+    worksFor: {
+      "@type": "Organization",
+      name: "Paretisa",
+    },
+    knowsAbout: [
+      "TypeScript",
+      "PHP",
+      "React",
+      "Next.js",
+      "REST APIs",
+      "PostgreSQL",
+      "LLM",
+      "RAG and embeddings",
+      "OpenAI",
+      "AWS",
+    ],
   };
 }
 
@@ -47,7 +68,7 @@ export function webSiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: `${site.name} — AI & Full-stack Engineer`,
+    name: siteTitle,
     url: siteUrl,
   };
 }
@@ -66,7 +87,7 @@ export function buildMetadata({
   const normalizedPath = path === "/" ? "" : path;
   const urlFor = (l: string) => `${siteUrl}/${l}${normalizedPath}`;
   const canonical = urlFor(locale);
-  const ogTitle = title ?? `${site.name} — AI & Full-stack Engineer`;
+  const ogTitle = title ?? siteTitle;
 
   return {
     ...(title ? { title } : {}),
