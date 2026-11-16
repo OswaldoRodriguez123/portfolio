@@ -1,5 +1,6 @@
 export const site = {
   name: "Oswaldo Rodríguez",
+  url: "https://oswaldorodriguez.is-a.dev",
   email: "oswaldo_rodriguez_1@hotmail.com",
   linkedin: "https://www.linkedin.com/in/oswaldorodriguez20",
   github: "https://github.com/OswaldoRodriguez123",

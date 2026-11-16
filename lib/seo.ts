@@ -3,8 +3,11 @@ import { projects } from "@/content/projects";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
 
+// Único origen del dominio público: `site.url` en `lib/site.ts`, o
+// `NEXT_PUBLIC_SITE_URL` cuando se define (p. ej. para previews). Robots,
+// sitemap, canonical, hreflang y JSON-LD derivan de aquí.
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://oswaldorodriguez.is-a.dev"
+  process.env.NEXT_PUBLIC_SITE_URL ?? site.url
 ).replace(/\/+$/, "");
 
 export const siteTitle = `${site.name} — AI and Full-stack Engineer`;

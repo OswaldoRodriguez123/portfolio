@@ -110,7 +110,7 @@ The site deploys on Vercel with zero configuration beyond importing the reposito
 2. In Vercel, "Add New… → Project" and import the repo. Framework preset: **Next.js**. No environment variables are required.
 3. Every push to `main` redeploys production; PRs get preview deployments.
 
-Optional: set `NEXT_PUBLIC_SITE_URL` (e.g. `https://your.domain`) in the Vercel project settings if you use a custom domain. The SEO metadata (canonical, sitemap, hreflang) is generated from this value; it falls back to `https://oswaldorodriguez.is-a.dev` when unset.
+Optional: set `NEXT_PUBLIC_SITE_URL` (e.g. `https://your.domain`) in the Vercel project settings to override the public origin. Otherwise the origin is `site.url` in `lib/site.ts`, the single source for the production domain: the SEO metadata (canonical, sitemap, hreflang), robots.txt and the JSON-LD all derive from it. To change the domain, edit that one line (and the `Live:` link above).
 
 ## License
 
