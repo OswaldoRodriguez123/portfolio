@@ -6,6 +6,7 @@ import {
   getSitemapEntries,
   personJsonLd,
   siteDescription,
+  siteUrl,
 } from "@/lib/seo";
 
 const EN_DESCRIPTION =
@@ -14,12 +15,14 @@ const ES_DESCRIPTION =
   "Ingeniero de IA y full-stack en Santiago de Chile. Diez años construyendo sistemas web en producción e IA aplicada: TypeScript, PHP, AWS, React y servicios con LLM, con Zumba como cliente desde 2023.";
 
 describe("seo", () => {
+  it("el dominio por defecto es el de producción", () => {
+    expect(siteUrl).toBe("https://oswaldorodriguez.is-a.dev");
+  });
+
   it("el sitemap incluye ambos locales y los case studies", () => {
     const urls = getSitemapEntries().map((e) => e.url);
-    expect(urls).toContain("https://oswaldorodriguez.is-a.dev/en");
-    expect(urls).toContain(
-      "https://oswaldorodriguez.is-a.dev/es/projects/psico-yerma",
-    );
+    expect(urls).toContain(`${siteUrl}/en`);
+    expect(urls).toContain(`${siteUrl}/es/projects/psico-yerma`);
   });
 
   it("el JSON-LD describe a una Person con sameAs", () => {
