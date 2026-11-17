@@ -9,7 +9,8 @@
     "skip": "Saltar al contenido",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "menu": "Menú"
+    "menu": "Menú",
+    "main": "Navegación principal"
   },
   "home": {
     "heroRole": "Ingeniero de IA y full-stack",
@@ -49,7 +50,9 @@
     "codeUi": "Código (UI)",
     "prev": "Proyecto anterior",
     "next": "Proyecto siguiente",
-    "backToProjects": "Todos los proyectos"
+    "backToProjects": "Todos los proyectos",
+    "stackLabel": "Tecnologías",
+    "navLabel": "Proyectos"
   },
   "notFound": {
     "title": "Página no encontrada",

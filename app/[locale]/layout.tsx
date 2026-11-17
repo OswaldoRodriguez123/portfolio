@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Schibsted_Grotesk, Source_Serif_4 } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
@@ -29,6 +29,18 @@ export const metadata: Metadata = {
     template: "%s — Oswaldo Rodríguez",
   },
   description: siteDescription,
+};
+
+// El tema lo aplica next-themes con un script inline, así que hasta que corre
+// el HTML no declara ningún esquema: el navegador pinta fondo, scrollbars y
+// controles nativos en claro. El meta llega antes que el script y el
+// `color-scheme` de `globals.css` cubre a quien navega sin JavaScript.
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ecede7" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e1512" },
+  ],
 };
 
 export function generateStaticParams() {

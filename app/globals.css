@@ -41,6 +41,7 @@
 }
 
 :root {
+  color-scheme: light dark;
   --background: #ecede7;
   --foreground: #151c19;
   --card: #f7f7f2;
@@ -66,6 +67,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: #0e1512;
   --foreground: #ecede7;
   --card: #16211c;
@@ -95,6 +97,10 @@
   }
   h1, h2, h3 {
     overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+  p, li, blockquote {
+    text-wrap: pretty;
   }
   body {
     @apply bg-background text-foreground;

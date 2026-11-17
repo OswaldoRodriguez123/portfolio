@@ -50,7 +50,7 @@ export function CaseStudy({
         </p>
         <ul
           className="flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-xs text-muted-foreground"
-          aria-label="Stack"
+          aria-label={t("stackLabel")}
         >
           {project.stack.map((item) => (
             <li key={item}>{item}</li>
@@ -127,7 +127,7 @@ export function CaseStudy({
       </Section>
 
       <nav
-        aria-label="Projects"
+        aria-label={t("navLabel")}
         className="mt-10 flex items-stretch justify-between gap-4 border-t border-line pt-6"
       >
         <div className="flex-1">

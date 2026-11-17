@@ -21,6 +21,17 @@ describe("CaseStudy", () => {
     expect(screen.getByRole("heading", { name: /results/i })).toBeInTheDocument();
   });
 
+  it("traduce las etiquetas de stack y de navegación entre proyectos", () => {
+    const spanish = getProject("psico-yerma", "es")!;
+    renderWithIntl(<CaseStudy project={spanish} locale="es" />, "es");
+    expect(
+      screen.getByRole("list", { name: /tecnologías/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("navigation", { name: /proyectos/i }),
+    ).toBeInTheDocument();
+  });
+
   it("enlaza a la demo y al repositorio", () => {
     renderWithIntl(<CaseStudy project={project} locale="en" />);
     expect(screen.getByRole("link", { name: /live/i })).toHaveAttribute(

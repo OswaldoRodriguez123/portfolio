@@ -9,7 +9,8 @@
     "skip": "Skip to content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "menu": "Menu"
+    "menu": "Menu",
+    "main": "Main navigation"
   },
   "home": {
     "heroRole": "AI and full-stack engineer",
@@ -49,7 +50,9 @@
     "codeUi": "Code (UI)",
     "prev": "Previous project",
     "next": "Next project",
-    "backToProjects": "All projects"
+    "backToProjects": "All projects",
+    "stackLabel": "Stack",
+    "navLabel": "Projects"
   },
   "notFound": {
     "title": "Page not found",
