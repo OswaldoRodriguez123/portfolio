@@ -1,25 +1,28 @@
 import { expect, test } from "@playwright/test";
 
-test("declara los esquemas de color y el theme-color de cada tema", async ({
-  page,
-}) => {
+test("declara que el documento soporta ambos esquemas", async ({ page }) => {
   await page.goto("/en");
 
   await expect(page.locator('meta[name="color-scheme"]')).toHaveAttribute(
     "content",
     "light dark",
   );
+});
 
-  const themeColors = page.locator('meta[name="theme-color"]');
-  await expect(themeColors).toHaveCount(2);
-  await expect(page.locator('meta[name="theme-color"][media*="light"]')).toHaveAttribute(
-    "content",
-    "#ecede7",
-  );
-  await expect(page.locator('meta[name="theme-color"][media*="dark"]')).toHaveAttribute(
-    "content",
-    "#0e1512",
-  );
+test("el theme-color sigue al tema elegido, no solo al del sistema", async ({
+  page,
+}) => {
+  await page.goto("/en");
+
+  const meta = page.locator('meta[name="theme-color"]');
+  await expect(meta).toHaveCount(1);
+  await expect(meta).toHaveAttribute("content", "#ecede7");
+
+  await page.getByRole("button", { name: /switch to dark theme/i }).click();
+  await expect(meta).toHaveAttribute("content", "#0e1512");
+
+  await page.getByRole("button", { name: /switch to light theme/i }).click();
+  await expect(meta).toHaveAttribute("content", "#ecede7");
 });
 
 test.describe("sin JavaScript", () => {

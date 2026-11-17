@@ -9,6 +9,7 @@ import "../globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
+import { ThemeColor } from "@/components/theme-color";
 import { isLocale, routing } from "@/i18n/routing";
 import { siteDescription, siteTitle, siteUrl } from "@/lib/seo";
 
@@ -37,10 +38,7 @@ export const metadata: Metadata = {
 // `color-scheme` de `globals.css` cubre a quien navega sin JavaScript.
 export const viewport: Viewport = {
   colorScheme: "light dark",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ecede7" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e1512" },
-  ],
+  themeColor: "#ecede7",
 };
 
 export function generateStaticParams() {
@@ -70,6 +68,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <SiteHeader />
+            <ThemeColor />
             <main id="main" className="flex-1">
               {children}
             </main>
