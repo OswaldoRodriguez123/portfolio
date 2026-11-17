@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     template: "%s — Oswaldo Rodríguez",
   },
   description: siteDescription,
+  // Opt-in explícito para que Chrome móvil respete el tamaño de texto del
+  // sistema: el layout ya refluye a 200 % y a 320 px sin scroll horizontal.
+  other: { "text-scale": "scale" },
 };
 
 // El tema lo aplica next-themes con un script inline, así que hasta que corre
