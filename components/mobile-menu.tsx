@@ -63,7 +63,7 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
         id={panelId}
         popover="auto"
         aria-label={t("menu")}
-        className="fixed inset-auto end-4 top-[4.5rem] m-0 w-48 rounded-lg border border-border bg-popover p-2 text-popover-foreground shadow-lg sm:hidden"
+        className="fixed inset-auto end-4 top-[4.5rem] m-0 w-48 max-w-[calc(100vw-2rem)] rounded-lg border border-border bg-popover p-2 text-popover-foreground shadow-lg sm:hidden"
       >
         {links.map(({ href, label }) =>
           EXTERNAL.test(href) ? (

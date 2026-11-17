@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ProjectsIndex } from "@/components/projects-index";
 import { buildMetadata } from "@/lib/seo";
@@ -38,5 +39,11 @@ export default async function ProjectsPage({
 
   setRequestLocale(locale);
 
-  return <ProjectsIndex locale={locale} />;
+  return (
+    <ViewTransition enter="auto" exit="auto" default="none">
+      <div>
+        <ProjectsIndex locale={locale} />
+      </div>
+    </ViewTransition>
+  );
 }
