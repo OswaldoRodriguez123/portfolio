@@ -30,6 +30,7 @@ function renderHtml(page: (typeof pages)[keyof typeof pages]) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="text-scale" content="scale" />
     <meta name="robots" content="noindex" />
     <title>${page.title}</title>
     <style>
