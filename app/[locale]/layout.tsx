@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Schibsted_Grotesk, Source_Serif_4 } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
@@ -9,6 +9,7 @@ import "../globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
+import { ThemeColor } from "@/components/theme-color";
 import { isLocale, routing } from "@/i18n/routing";
 import { siteDescription, siteTitle, siteUrl } from "@/lib/seo";
 
@@ -29,6 +30,15 @@ export const metadata: Metadata = {
     template: "%s — Oswaldo Rodríguez",
   },
   description: siteDescription,
+};
+
+// El tema lo aplica next-themes con un script inline, así que hasta que corre
+// el HTML no declara ningún esquema: el navegador pinta fondo, scrollbars y
+// controles nativos en claro. El meta llega antes que el script y el
+// `color-scheme` de `globals.css` cubre a quien navega sin JavaScript.
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+  themeColor: "#ecede7",
 };
 
 export function generateStaticParams() {
@@ -58,6 +68,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <SiteHeader />
+            <ThemeColor />
             <main id="main" className="flex-1">
               {children}
             </main>

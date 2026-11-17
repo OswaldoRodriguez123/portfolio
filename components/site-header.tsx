@@ -38,7 +38,7 @@ export function SiteHeader() {
           Oswaldo Rodríguez
         </Link>
         <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-          <nav aria-label="Main navigation" className="hidden items-center gap-4 pr-2 sm:flex lg:gap-6">
+          <nav aria-label={t("main")} className="hidden items-center gap-4 pr-2 sm:flex lg:gap-6">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
