@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { HomeContent } from "@/components/home-content";
 import { buildMetadata } from "@/lib/seo";
@@ -38,5 +39,11 @@ export default async function HomePage({
 
   setRequestLocale(locale);
 
-  return <HomeContent locale={locale} />;
+  return (
+    <ViewTransition enter="auto" exit="auto" default="none">
+      <div>
+        <HomeContent locale={locale} />
+      </div>
+    </ViewTransition>
+  );
 }

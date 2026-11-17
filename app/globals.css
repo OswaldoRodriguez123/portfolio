@@ -105,6 +105,7 @@
   }
   p, li, blockquote {
     text-wrap: pretty;
+    overflow-wrap: break-word;
   }
   body {
     @apply bg-background text-foreground;
@@ -112,6 +113,25 @@
   html {
     @apply font-sans;
   }
+}
+
+/* El header vive en el layout, así que queda fuera del contenido que entra y
+   sale: se ancla para que la navegación no lo mueva ni lo haga parpadear. */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header) {
+  animation: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -127,5 +147,13 @@
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+
+  /* `*` no alcanza a los pseudo-elementos de View Transitions: sin esto la
+     navegación seguiría animándose para quien pide menos movimiento. */
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

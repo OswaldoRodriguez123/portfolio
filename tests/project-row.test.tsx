@@ -69,4 +69,31 @@ describe("ProjectRow", () => {
     expect(img).toHaveAttribute("src", "/projects/psico-yerma.webp");
     expect(row!.querySelector("div.aspect-\\[4\\/3\\]")).toBeNull();
   });
+
+  it("prioriza la portada cuando la fila es la primera del índice", () => {
+    const base = getProject("psico-yerma", "en");
+    expect(base).not.toBeNull();
+    const project = { ...base!, cover: "/projects/psico-yerma.webp" };
+
+    const eager = renderWithIntl(
+      <ProjectRow project={project} locale="en" priority />,
+    );
+    const high = eager.container.querySelector("img")!;
+    expect(high).toHaveAttribute("fetchpriority", "high");
+    expect(high).not.toHaveAttribute("loading");
+    eager.unmount();
+
+    const lazy = renderWithIntl(<ProjectRow project={project} locale="en" />);
+    const deferred = lazy.container.querySelector("img")!;
+    expect(deferred).toHaveAttribute("loading", "lazy");
+    expect(deferred).not.toHaveAttribute("fetchpriority");
+  });
+
+  it("envuelve la fila en un contenedor de consulta", () => {
+    const project = getProject("psico-yerma", "en")!;
+    const { container } = renderWithIntl(
+      <ProjectRow project={project} locale="en" />,
+    );
+    expect(container.querySelector(".\\@container")).not.toBeNull();
+  });
 });

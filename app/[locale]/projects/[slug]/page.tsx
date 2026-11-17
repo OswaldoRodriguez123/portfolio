@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { CaseStudy } from "@/components/case-study";
 import { getProject } from "@/lib/content";
@@ -50,5 +51,11 @@ export default async function CaseStudyPage({
     notFound();
   }
 
-  return <CaseStudy project={project} locale={locale} />;
+  return (
+    <ViewTransition enter="auto" exit="auto" default="none">
+      <div>
+        <CaseStudy project={project} locale={locale} />
+      </div>
+    </ViewTransition>
+  );
 }

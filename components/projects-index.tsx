@@ -16,8 +16,13 @@ export function ProjectsIndex({ locale }: { locale: Locale }) {
         {t("description")}
       </p>
       <div className="mt-8">
-        {projects.map((project) => (
-          <ProjectRow key={project.slug} project={project} locale={locale} />
+        {projects.map((project, index) => (
+          <ProjectRow
+            key={project.slug}
+            project={project}
+            locale={locale}
+            priority={index === 0}
+          />
         ))}
       </div>
     </div>
